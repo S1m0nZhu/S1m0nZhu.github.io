@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://www.bootcdn.cn//css?family=Lato:300,300italic,400,400italic,700,700italic|Loberster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/005-unicorn.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="S1m0n BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Substrate：下一代区块链通用框架区块链发展现状为什么substrate会成为下一代通用框架？ 以太坊在区块链发展过程中具有不可磨灭的贡献，但是由于历史包袱，更新迭代比较慢 EOS雷声大雨点小，舍弃了区块链去中心化，等特性，一味追求TPS，但也EOS的TPS仅有几千级别 市场比较浮躁，但技术需要迭代积累，区块链现阶段发展遇到瓶颈。区块链智能合约基本能用，但离大规模应用还差得远，目前区块链框架">
+<meta name="keywords" content="Bitcoin Ethereum Hyperledger Libra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="S1m0n BLOG">
+<meta property="og:url" content="http://yoursite.com/2019/08/16/Substrate：下一代区块链通用框架/index.html">
+<meta property="og:site_name" content="S1m0n BLOG">
+<meta property="og:description" content="Substrate：下一代区块链通用框架区块链发展现状为什么substrate会成为下一代通用框架？ 以太坊在区块链发展过程中具有不可磨灭的贡献，但是由于历史包袱，更新迭代比较慢 EOS雷声大雨点小，舍弃了区块链去中心化，等特性，一味追求TPS，但也EOS的TPS仅有几千级别 市场比较浮躁，但技术需要迭代积累，区块链现阶段发展遇到瓶颈。区块链智能合约基本能用，但离大规模应用还差得远，目前区块链框架">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-16T06:26:19.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="S1m0n BLOG">
+<meta name="twitter:description" content="Substrate：下一代区块链通用框架区块链发展现状为什么substrate会成为下一代通用框架？ 以太坊在区块链发展过程中具有不可磨灭的贡献，但是由于历史包袱，更新迭代比较慢 EOS雷声大雨点小，舍弃了区块链去中心化，等特性，一味追求TPS，但也EOS的TPS仅有几千级别 市场比较浮躁，但技术需要迭代积累，区块链现阶段发展遇到瓶颈。区块链智能合约基本能用，但离大规模应用还差得远，目前区块链框架">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/16/Substrate：下一代区块链通用框架/">
+
+
+
+
+
+  <title> | S1m0n BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <div class="headband">
+          <a href="https://github.com/S1m0nZhu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1m0n BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All About the Blockchain Techlonogy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+
+    
+    </div></header>
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/Substrate：下一代区块链通用框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SimonZhu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/L0YAL.jpeg">
+    </span>
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1m0n BLOG">
+    </span>
+    
+    
+      <header class="post-header">
+    
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+    
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-16T15:37:25+08:00">
+                2019-08-16
+              </time>
+            
+    
+            
+    
+            
+          </span>
+    
+          
+    
+          
+            
+          
+    
+          
+          
+    
+          
+    
+          
+    
+          
+    
+        </div>
+      </header>
+    
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+    
+      
+      
+    
+      
+        <h1 id="Substrate：下一代区块链通用框架"><a href="#Substrate：下一代区块链通用框架" class="headerlink" title="Substrate：下一代区块链通用框架"></a>Substrate：下一代区块链通用框架</h1><h2 id="区块链发展现状"><a href="#区块链发展现状" class="headerlink" title="区块链发展现状"></a>区块链发展现状</h2><p>为什么substrate会成为下一代通用框架？</p>
+<p>以太坊在区块链发展过程中具有不可磨灭的贡献，但是由于历史包袱，更新迭代比较慢</p>
+<p>EOS雷声大雨点小，舍弃了区块链去中心化，等特性，一味追求TPS，但也EOS的TPS仅有几千级别</p>
+<p>市场比较浮躁，但技术需要迭代积累，区块链现阶段发展遇到瓶颈。区块链智能合约基本能用，但离大规模应用还差得远，目前区块链框架在扩展性/易用性/共识能源问题的局限性导致的。</p>
+<p>区块链开发这如何保障自己的利益最大化，知识前沿化，把握发展的趋势。</p>
+<p>代码不会说谎，登陆GitHub浏览各项目就知道了。</p>
+<h2 id="一、Substrate重塑区块链"><a href="#一、Substrate重塑区块链" class="headerlink" title="一、Substrate重塑区块链"></a>一、Substrate重塑区块链</h2><p>现有区块链，只是验证了区块链Dapp能用，但没办法做到大规模应用，主要局限于三点，下面我们分三部分来分析Substrate如何解决这些问题。</p>
+<p>Substrate之于区块链如同Linux之于操作系统。</p>
+<h3 id="扩展性："><a href="#扩展性：" class="headerlink" title="扩展性："></a>扩展性：</h3><p>1、现有区块链都是单链模式，一条链的最大的tps不能过万（单台计算机tps差不多10万tps,因为hash等加密算法的重复利用，链的tps&lt;&lt;1/10单台计算机计算）。Substrate可以灵活地拓展任意条parachain,好比现在的分布式计算，3台计算机算不过来，我们可以加机器；</p>
+<p>2、各层结构的模块化：区块链大致由（p2p,rpc,consensus,storage,crypto）这几部分组成。但现有的链都是把这个几个模块糅合在一起；</p>
+<p>parity团队因为在长期开发以太坊，积累了经验，把这几个模块往高层次抽象。如substrate会做到devp2p,libp2p网络一键切换。再如任意种hash算法替换；</p>
+<p>3、任意代码的升级，比普通云服务器的升级更简便。因为每个substrate节点都含有两份可执行runtime内核代码。</p>
+<p>一份是本地编译的二进制代码，另一份是在链上的wasm代码（跑在wasm虚拟机上的代码）。为什么两份代码就能解决了快速稳定升级？（无缝升级内核） </p>
+<p>因为Substrate两份代码同时执行，一份是wasm代码，一份是native代码，native代码是rust std版编译的二进制代码，wasm代码是跑在虚拟机上的代码，链执行过程会选择1、只执行wasm；2、只执行native，3、两者都执行。</p>
+<p>substrate在执行时会做比较，先执行wasm再执行native，如果两者执行结果不一致，会以wasm为准。</p>
+<p>为什么以wasm为准？</p>
+<p>wasm是跟随区块一起成长的，初始化，set code是进行runtime升级，在第100个块升级了wasm,之后执行的按照快的顺序来执行，升级后的wasm覆盖了前一个wasm，跟着链跑，会一直正确执行；而native编译的二进制代码只是升级的最后一个版本。以太坊升级是一个大事件，每次升级都是native代码，都要重新下载最新的代码，才能保持版本同步。wasm代码一直在链上的，在链上所有版本都在链上，wasm执行的内核代码是不会有错的，执行wasm代码对硬分叉比较友好，跑在虚拟机上，性能有问题，native本地代码性能更好，所以在安全方面可以依靠wasm代码，在性能方面依靠native代码，在过渡阶段 两者都有，可以顺利过渡到下个版本。</p>
+<p>Gavin wood在web3大会上掩饰了30分钟起一条链，30分钟升级一条链，郭时清比喻substrate可以”开着汽车换发动机”。可以把链的合成逻辑更新，完全变成另一条链，升级到下一个版本。</p>
+<h3 id="易用性："><a href="#易用性：" class="headerlink" title="易用性："></a>易用性：</h3><p>rust有runtime，substrate也有runtime，runtime和操作系统中的kernel是一个意思</p>
+<p>runtime合约——系统级别的合约，ChainX2018已经在写</p>
+<p>contract合约——用户级别的合约，BBQ测试网</p>
+<p>wasm合约，支持rust/c/c++ wasm的原生storage接口。</p>
+<p>极高层次的抽象，可以使不同的开发人员做不同部分的开发，以下双层可扩展理解为多层，至少是双层。</p>
+<ul>
+<li>双层执行code（native，wasm）</li>
+<li>双层共识 aura+grandpa</li>
+<li>双层合约 runtime + contract</li>
+<li>双层p2p 以太坊的devp2p + IPFS的libp2p</li>
+<li>多模版密码库 hash算法、椭圆曲线加密算法，可以自定义设置。</li>
+</ul>
+<h3 id="共识："><a href="#共识：" class="headerlink" title="共识："></a>共识：</h3><p>共识是命脉，但是和用户打交道较少，合约与用户打交道较多，安全在于共识。</p>
+<p>1、多种共识并行交互执行，最早是algroud定义了快慢速通道共识并行，但那现在还是在白皮书里，现在的substrate就能做到aura+grandpa两种共识并行运行。aura是快共识，grandpa是慢共识，grandpa有确定性。aura牺牲确定性，产生的及时性。因为不可能三角对每一种共识是普遍存在的，但是可以把不可能三角里面，多种共识组合起来，然后可能达到最优化。不可能三角中第一个共识通过牺牲中心化，跑得快，如EOS；也可以牺牲性能，保证分散性确定性，如grandpa。</p>
+<p>这种组合共识，既有pow的分散性，有没有他的能源浪费的问题，还有一个100%的确定性，而不是pow的概率确定性，尤其是性能方面，pow不可同日而语；</p>
+<p>2、aura提供了快速并发出块性，像pow一样节点分散，可以支持100万节点同时在同一高度同时出块。</p>
+<p>3、grandpa提供了确定性，只要用BFT确认最后一个大家公知的块即可。这对传统BFT的通信消息量减少99%以上。</p>
+<p><strong><em>基于hash的共识，和基于签名的共识的优缺点对比：</em></strong></p>
+<p>Pow是基于hash算法的共识，pos是基于签名的共识，pos都是确定性的；</p>
+<p>hash摘要算法和椭圆曲线算法是区块链密码学两个核心，相辅相成，可以结合用也可以分散用，用到哪些层面，又有何优缺点，在各种层次应用中有何有缺点。</p>
+<p>libp2p是IPFS团队定义的一个协议，是目前市面上支持各种协议最广，最稳定的p2p库，filecoin能筹集很多资金的一个重要原因是libp2p库做得好。</p>
+<p>devp2p是以太坊的p2p层协议，比较单一简单</p>
+<p>substrate将两者集成进来，都可以并行跑，也可以开发自己的p2p,可插拔式替换</p>
+<p><strong><em>Rust</em></strong></p>
+<ul>
+<li>社区特别open的语言，和区块链open的思想吻合</li>
+<li>有c++的性能，没有c++运行时的不确定性</li>
+<li>对wasm友善，从语言库级别支持std,no_std两套代码规范，no_std的代码兼容wasm这种确定性执行</li>
+</ul>
+<p>二、创新方向</p>
+<p>区块链技术现在都在努力往那些方面创新？</p>
+<ul>
+<li><p>共识 （命脉）</p>
+<p>1、Cardano、Alground、difinity等等，这些项目都是以共识创新而闻名的项目，然而，这些项目的共识创新现在都只是停留在白皮书里。但Substrate已经实现了他们白皮书里所期望的共识效果；</p>
+<p>2、优秀共识所期望的点：像pow一样，大家都有同等的同时出块的公平权利，有没有他的能源浪费和性能问题。其实就是Substrate的aura+grandpa共识，也是VB所常说的casper</p>
+<p>3、casper和tendermint的比较，或者1年前的一些技术可以参考郭光华老婆翻译的一些文章：<a href="https://lilymoana.github.io/ConsensusCompare.html" target="_blank" rel="noopener">https://lilymoana.github.io/ConsensusCompare.html</a></p>
+</li>
+<li><p>隐私</p>
+<p>1、Bulletproof基于这协议的隐私币有许多<a href="https://www.jianshu.com/p/47c105f356f5" target="_blank" rel="noopener">https://www.jianshu.com/p/47c105f356f5</a></p>
+<p>2、零知识证明，parity团队也正在用substrate框架去实现zcash</p>
+<p>3、抗量子密码学，同态加密等理论加密算法的研究</p>
+</li>
+<li><p>合约VM （决定区块链命运）</p>
+<p>1、wasm阵营：基于wasm vm的链越来越多，根本原因是wasm生态特别丰富，wasm现在已经支持c/c++/rust等编译型语言，其他语言都是在支持的路途中</p>
+<p>2、非wasm阵营，如solidity等VM</p>
+</li>
+</ul>
+<p>三、Polkadot &amp; ChainX</p>
+<p>基于Substrate框架实现的Polkadot/ChainX简介</p>
+<p><strong><em>Polkadot多链如何组织与管理</em></strong></p>
+<p>1、共识的一致管理</p>
+<p>共识由reley chain统一管理，各个parachain的验证人由relaychain随机随时分配。举个最简单的例子，比如polkadot网络由三条链组成（relay，para1, para2）,一共有7个验证人节点，那么relay chain管理共识的模块，可以采取2：2：3的个数随机分配给relay，para1,para2三条链随机出块，随机性/随时性，保证安全；</p>
+<p>2、消息的统一路由</p>
+<p>价值消息的共识，互换管理分配。IPC消息路由这是polkadot需要做的第二大部分，这部分在白皮书里有介绍，但是现正在展开中，大致的思路可以对比参看路由器的路由协议。只是这些不同链的路由，最后由relaychain统一管理。</p>
+<p><strong><em>ChainX 多币如何组织与管理</em></strong></p>
+<p>1、跨链方式的选择</p>
+<p>这又回到之前提到的问题，hash和椭圆曲线谁更好的问题，两个例子：</p>
+<ul>
+<li><p>BTC：是用hash方式的共识，更优选择是链上轻节点；</p>
+</li>
+<li><p>EOS：是椭圆曲线式的共识，更优选择分布式密钥多签。多签的方式，每换一次选举，21个出块节点也更新换代。</p>
+</li>
+</ul>
+<p>BTC没有用签名的方式，用的是难度叠加的pow共识方式，没有100%的确定性。6块，链上轻节点,确定性（多签）+不确定性（hash）=不确定性多签,分布式密钥+多签的方式不适用于BTC；轻节点和本链没有太多隔阂。</p>
+<p>2、币在ChainX上价值的互换</p>
+<p>ChainX会在Runtime合约层内嵌各种coin撮合的交易所，同时也会把这些API接口留给合约层，这样任何开发合约的用户，可以自如的选择任何比重作为价值驱动来开发自己的合约。比如，可以用BTC来开发合约。</p>
+<h2 id="四、参与"><a href="#四、参与" class="headerlink" title="四、参与"></a>四、参与</h2><p>投资人与技术人员</p>
+<p>在区块链世界即将爆发的前夕，我们如何参与进来</p>
+<p>技术人员如何参与-hack substrate</p>
+<p>开发合约的过程可以带着三个问题去学习(授人以渔)</p>
+<p>1、<strong>交易怎么调用进来；</strong>给一个人转账，怎么对这笔交易进行签名、组装，格式是什么，怎么发送到链上，链上怎么签名解签，如何打包，调用到虚拟机里面去的；之后在虚拟机相关业务逻辑如何处理；</p>
+<p>2、<strong>相关业务逻辑如何处理；</strong>用户合约在这一层写；</p>
+<p>3、<strong>处理结果如何存储在链上；</strong>逻辑完成后，如何存储，处理结果如何存储到链上，跟什么数据结合，虚拟机里面怎么调用到外层数据库了，怎么交互的；</p>
+<p>4、<strong>如何保证一致性/安全性(核心、难点、重点、链级别选手)</strong>；交易打包，如何确认，更多的是牵涉到共识问题，aura共识如何保证一致性，grandapa保证确定性，重点是在一致性问题上。</p>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    SimonZhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2019/08/16/Substrate：下一代区块链通用框架/" title>http://yoursite.com/2019/08/16/Substrate：下一代区块链通用框架/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+    
+    <footer class="post-footer">
+      
+    
+      
+      
+      
+    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/25/以太坊智能合约开发前准备/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+    
+          <span class="post-nav-divider"></span>
+    
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/20/30种共识算法完全列表/" rel="prev" title="30种共识算法完全列表">
+                30种共识算法完全列表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/L0YAL.jpeg" alt="SimonZhu">
+            
+              <p class="site-author-name" itemprop="name">SimonZhu</p>
+              <p class="site-description motion-element" itemprop="description">Sharp  Speed  Smooth</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhumeng369@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/zhumeng369" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/anthonyzhu369" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Substrate：下一代区块链通用框架"><span class="nav-number">1.</span> <span class="nav-text">Substrate：下一代区块链通用框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区块链发展现状"><span class="nav-number">1.1.</span> <span class="nav-text">区块链发展现状</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Substrate重塑区块链"><span class="nav-number">1.2.</span> <span class="nav-text">一、Substrate重塑区块链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展性："><span class="nav-number">1.2.1.</span> <span class="nav-text">扩展性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#易用性："><span class="nav-number">1.2.2.</span> <span class="nav-text">易用性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共识："><span class="nav-number">1.2.3.</span> <span class="nav-text">共识：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、参与"><span class="nav-number">1.3.</span> <span class="nav-text">四、参与</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SimonZhu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+
+</div></body></html>
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/home/pyvip/文档/blog/js/src/clicklove.js"></script>

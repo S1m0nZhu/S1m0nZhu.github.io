@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://www.bootcdn.cn//css?family=Lato:300,300italic,400,400italic,700,700italic|Loberster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/005-unicorn.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Consensus,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="S1m0n BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="原文来自：http://www.infoq.com/cn/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms  共识算法是所有区块链 / DAG 的基础，它们构成了区块链 / DAG 平台中的最重要部分。 如果没有共识算法，我们得到只是一个不可写的哑（dummy）数据库。 我将在本文中尽可能列出所有主要的共识算法，评">
+<meta name="keywords" content="Consensus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="30种共识算法完全列表">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/30种共识算法完全列表/index.html">
+<meta property="og:site_name" content="S1m0n BLOG">
+<meta property="og:description" content="原文来自：http://www.infoq.com/cn/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms  共识算法是所有区块链 / DAG 的基础，它们构成了区块链 / DAG 平台中的最重要部分。 如果没有共识算法，我们得到只是一个不可写的哑（dummy）数据库。 我将在本文中尽可能列出所有主要的共识算法，评">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-ebffc6a0bc1f3d0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-3297c52c3e04343b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-f2134c941088a492.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/375/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-ca8e163326b50fda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/567/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-ae30cc0a27ab0cca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-db285107b0d9bd6a.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-38bbd9a46787cbc2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-ef846a48c3d33e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/360/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-9b41d5ddb6e53d3b.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-85e0a6ce73878d00.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-72eb51551df4529c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-48a0e79133b581d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/76/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-a0633c03ff6a055b.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/424/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-0c9ba933ac520bea.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-8ef00ada2a542763.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-e391e62614fd210e.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/794/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-346337a7763e5855.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-243c197628b63615.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-81a1e254bc53e651.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/385/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-b34a98f2a1604d5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/693/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1112615-8735e3e988bb9631.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/370/format/webp">
+<meta property="og:updated_time" content="2019-08-20T15:08:41.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="30种共识算法完全列表">
+<meta name="twitter:description" content="原文来自：http://www.infoq.com/cn/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms  共识算法是所有区块链 / DAG 的基础，它们构成了区块链 / DAG 平台中的最重要部分。 如果没有共识算法，我们得到只是一个不可写的哑（dummy）数据库。 我将在本文中尽可能列出所有主要的共识算法，评">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1112615-ebffc6a0bc1f3d0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/30种共识算法完全列表/">
+
+
+
+
+
+  <title>30种共识算法完全列表 | S1m0n BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <div class="headband">
+          <a href="https://github.com/S1m0nZhu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1m0n BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All About the Blockchain Techlonogy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+
+    
+    </div></header>
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/30种共识算法完全列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SimonZhu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/L0YAL.jpeg">
+    </span>
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1m0n BLOG">
+    </span>
+    
+    
+      <header class="post-header">
+    
+        
+        
+          <h1 class="post-title" itemprop="name headline">30种共识算法完全列表</h1>
+        
+    
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-20T23:05:24+08:00">
+                2019-08-20
+              </time>
+            
+    
+            
+    
+            
+          </span>
+    
+          
+    
+          
+            
+          
+    
+          
+          
+    
+          
+    
+          
+    
+          
+    
+        </div>
+      </header>
+    
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+    
+      
+      
+    
+      
+        <p>原文来自：<a href="http://www.infoq.com/cn/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms</a></p>
+<hr>
+<p>共识算法是所有区块链 / DAG 的基础，它们构成了区块链 / DAG 平台中的最重要部分。</p>
+<p>如果没有共识算法，我们得到只是一个不可写的哑（dummy）数据库。</p>
+<p>我将在本文中尽可能列出所有主要的共识算法，评估各自的优劣之处。如果读者发现有所遗漏，或是存在错误，希望能通过评论指出。此外，我个人也在逐步深入研究共识算法及其对经济的影响，为此本文也将做定期的更新。</p>
+<p>另：本文假定读者理解共识算法及其在区块链中的重要性。</p>
+<p>下面列出 30 种共识算法。</p>
+<h2 id="1-工作量证明（PoW，Proof-of-Work）"><a href="#1-工作量证明（PoW，Proof-of-Work）" class="headerlink" title="1. 工作量证明（PoW，Proof of Work）"></a>1. 工作量证明（PoW，Proof of Work）</h2><p><strong>优点</strong>:</p>
+<ul>
+<li>自 2009 年以来得到了广泛测试，目前依然得到广泛的使用。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>速度慢。</li>
+<li>耗能巨大，对环境不好。</li>
+<li>易受 “规模经济”（<a href="https://en.wikipedia.org/wiki/Economies_of_scale" target="_blank" rel="noopener">economies of scale</a>）的影响。</li>
+</ul>
+<p>使用者：<a href="https://bitcoin.org/" target="_blank" rel="noopener">Bitcoin</a>、<a href="https://ethereum.org/" target="_blank" rel="noopener">Ethereum</a>、<a href="https://litecoin.org/" target="_blank" rel="noopener">Litecoin</a>、<a href="http://dogecoin.com/" target="_blank" rel="noopener">Dogecoin</a> 等。</p>
+<p><strong>类型</strong>：有竞争共识（Competitive consensus）。</p>
+<p><strong>解释</strong>：PoW 是是首个共识算法。它是由中本聪在他的<a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener">论文</a>中提出的，用于建立分布式无信任共识并识别 “双重支付”（double spend）问题。PoW 并非一个新理念，但是中本聪将 Pow 与加密签名、Merkle 链和 P2P 网络等已有理念结合，形成一种可用的分布式共识系统。加密货币是这样系统的首个基础和应用，因而独具创新性。</p>
+<p>在 PoW 的工作方式中，区块链参与者（称为 “矿工”）要在区块链中添加一块交易，必须解决某种“复杂但是无用” 的计算问题。</p>
+<p>本质上，这种做法可确保矿工花费了一些金钱或资源（矿机）完成工作，这表示了它们将不会损害区块链系统，因为对系统的损害也将会导致投资的损失，进而损害他们自身。</p>
+<p>为保证运行区块时间不变，问题的复杂性会发生变化。有时，会存在多名矿工同时解决了问题。在这种情况下，每位矿工从中选取一个区块链，并以选取最长链者为获胜者。因此，如果假定大多数矿工工作在同一个链上，那么成长最快的链将成为最长和最值得信任的链。这样，只要由矿工提交的工作有超过一半是值得信任的，那么 Bitcoin 就是安全的。</p>
+<p><strong>扩展阅读</strong>： <a href="https://en.bitcoin.it/wiki/Proof_of_work" target="_blank" rel="noopener">Proof of work</a></p>
+<h2 id="2-权益证明（PoS，Proof-of-Stake）"><a href="#2-权益证明（PoS，Proof-of-Stake）" class="headerlink" title="2. 权益证明（PoS，Proof of Stake）"></a>2. 权益证明（PoS，Proof of Stake）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>节能。</li>
+<li>攻击者代价更大。</li>
+<li>不易受 “规模经济” 的影响。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>“无利害关系 “(Nothing at stake)” 攻击问题。</li>
+</ul>
+<p><strong>使用者</strong>：<a href="https://github.com/ethereum/wiki/wiki/Proof-of-Stake-FAQ" target="_blank" rel="noopener">Ethereum</a>（即将推出）、<a href="https://peercoin.net/" target="_blank" rel="noopener">Peercoin</a>、<a href="https://nxtplatform.org/" target="_blank" rel="noopener">Nxt</a>。</p>
+<p><strong>类型</strong>：有竞争共识。</p>
+<p><strong>解释</strong>：PoS 是作为** Pow 的替代技术**提出的，意在解决 PoW 的一些内在问题。PoS 没有使用挖矿方法，而是用户必须具有系统中的一些权益（币）。因此，如果用户拥有 10% 的权益（代币），那么该用户挖掘下一个区块的可能性就是 10%。</p>
+<p>挖矿为解决计算上的挑战，需要运行各种加密计算，这需要耗费大量的算力。算力将转变为 PoW 所需的大量电能。据估计在 2015 年时，一个 Bitcoin 交易所需的电力，可达 1.57 个美国家庭一日所需的电力。PoS 的提出是为了节约电力耗费。</p>
+<p><strong>在 PoS 中，一个美元就是一个美元</strong>。例如，假定有一万名每位每分钟花费 1 美元（一年 8760 万美元）的矿工，要比一位具有每分钟花费一万美元挖掘矿池能力的矿工拥有更少的哈希能力（Hashing Power）。但是在 PoS 中不支持一次用光所有算力，一美元就是一美元。因此 PoS 不易受 “规模经济” 的影响。</p>
+<p>此外，攻击 PoS 系统也要比攻击 PoW 系统的代价更大。引用 <a href="https://medium.com/@Vlad_Zamfir" target="_blank" rel="noopener">Vlad Zamfir</a> 的说法：</p>
+<blockquote>
+<p>在 PoS 中，重复 51% 攻击的代价，可类比为每额外运行一轮，都会 “烧毁你的 ASIC 农场”。</p>
+</blockquote>
+<p>这意味着，每次攻击 PoS 系统，攻击者都会失去自己的权益。而在 PoW 中，攻击者不会丢失挖矿设备，或是代币。对 PoW 系统的攻击只会使攻击本身难以执行。</p>
+<p>但是 PoS 会在** “无厉害关系”** 上出问题。这种对多个区块历史（forks）投票的方式不会让区块生成器有任何损失，进而阻碍了达成共识。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/7341-1533408524407.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/7341-1533408524407.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-ebffc6a0bc1f3d0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/7341-1533408524407.png" target="_blank" rel="noopener"></a></p>
+<p>在 PoS 中，你可以在区块链的双方押注资产（“无厉害关系” 问题）。而在 PoW 中，你不能从链的两个方向同时挖矿，因为这难以实现。</p>
+<p>不同于 PoW 系统（用户为扩展链必须做大量的计算），PoS 在多个链上工作的代价很小。有一些项目试图通过多种方式解决这个问题（参见 “扩展阅读”）。例如，一个解决方案就是上文所介绍的，对不好的验证者做惩罚。</p>
+<p><strong>扩展阅读</strong>：<a href="https://en.wikipedia.org/wiki/Proof-of-stake" target="_blank" rel="noopener">Proof of stake</a></p>
+<h2 id="3-延迟工作量证明（dPoW，Delayed-Proof-of-Work）"><a href="#3-延迟工作量证明（dPoW，Delayed-Proof-of-Work）" class="headerlink" title="3. 延迟工作量证明（dPoW，Delayed Proof-of-Work）"></a>3. 延迟工作量证明（dPoW，Delayed Proof-of-Work）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>节能。</li>
+<li>安全性增加。</li>
+<li>可以通过非直接提供 Bitcoin（或是其它任何安全链），添加价值到其它区块链，无需付出 Bitcoin（或是其它任何安全链）交易的代价。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<p>*　只有使用 PoW 或 PoS 的区块链，才能采用这种共识算法。<br>*　在 “公证员激活”（Notaries Active）模式下，必须校准不同节点（公证员或正常节点）的哈希率，否则哈希率间的差异会爆炸（下文将给出详细解释）。</p>
+<p><strong>采用者</strong>：<a href="https://wiki.komodoplatform.com/wiki/Komodo" target="_blank" rel="noopener">Komodo</a></p>
+<p><strong>类型</strong>：协同型共识（Collaborative consensus）</p>
+<p><strong>解释</strong>：dPoW 是一种混合共识方法，允许一个区块链利用第二个区块链的哈希算力（Hashing Power）所提供的安全。该机制是通过一组公证员节点（Notary Node）实现的。公证员节点实现将第一个区块链的数据添加到第二个区块链中。进而，第二个区块链请求在两个区块链间达成妥协，弱化第一个区块链的安全。<a href="https://wiki.komodoplatform.com/wiki/Komodo" target="_blank" rel="noopener">Komodo</a> 是首个使用该共识方法的区块链，它就是附加于 Bitcoin 区块链之上的。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/5792-1533408526489.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/5792-1533408526489.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-3297c52c3e04343b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/5792-1533408526489.png" target="_blank" rel="noopener"></a></p>
+<p>使用 dPoW 的区块链也可以使用 PoW 或 PoS 共识方法工作，并可以附加在任何采用 PoW 的区块链上。但对于由 dPoW 提供安全的区块链，当前 Bitcoin 给出了最高安全层级的哈希率。下图展示了主区块链的单个记录以及其所附着的 PoW 区块链。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/4673-1533408523166.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/4673-1533408523166.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-f2134c941088a492.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/375/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/4673-1533408523166.png" target="_blank" rel="noopener"></a></p>
+<p>图片来源：<a href="https://wiki.komodoplatform.com/wiki/Delayed_Proof_of_Work_%28dPoW%29" target="_blank" rel="noopener">https://wiki.komodoplatform.com/wiki/Delayed_Proof_of_Work_%28dPoW%29</a></p>
+<p>dPoW 系统中有两种类型的节点：公证人节点和正常节点。64 个公证人节点是由 dPoW 区块链的权益持有者（stakeholder）选举产生的，它们可从 dPoW 区块链向所附加的 PoW 区块链添加经公证确认的块。一旦添加了一个块，该块的哈希值将被添加到由 33 个公证人节点签署的 Bitcoin 交易中，并创建一个哈希到 Bitcoin 区块链的 dPow 块记录。该记录已被网络中的大多数公证人节点公证。</p>
+<p>为避免公证人节点间在挖矿上产生战争，进而降低网络的效率，Komodo 设计了一种采用轮询机制的挖矿方法。该方法具有两种运行模式。在 “无公证人”（No Notary）模式下，支持所有网络节点参与挖矿，这类似于传统 PoW 共识机制。而在“公证人激活”（Notaries Active）模式下，网络公证人使用一种显著降低的网络难度率挖矿。“公证人激活” 模式下，允许每位公证人使用其当前的难度挖掘一个区块，而其它公证人节点必须采用 10 倍难度挖矿，所有正常节点使用公证人节点难度的 100 倍挖矿。</p>
+<p>但这会导致一些问题。我在与 Komodo 创始人的一次谈话中提及，这将导致公证人矿工和正常矿工间的哈希率存在很高的差异：</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3984-1533408524674.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3984-1533408524674.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-ca8e163326b50fda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/567/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3984-1533408524674.png" target="_blank" rel="noopener"></a></p>
+<p>图 本文作者与 Komodo 创始人间就不一致性问题进行交流的截图</p>
+<p>dPoW 系统在设计上支持区块链在没有公证人节点的情况下继续运行。在这种情况下，dPoW 区块链可以基于初始的共识方法继续运行，但将不再具有所附着区块链增添的安全。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3285-1533408524943.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3285-1533408524943.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-ae30cc0a27ab0cca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3285-1533408524943.png" target="_blank" rel="noopener"></a></p>
+<p>图片来源：<a href="https://wiki.komodoplatform.com/wiki/Delayed_Proof_of_Work_%28dPoW%29" target="_blank" rel="noopener">https://wiki.komodoplatform.com/wiki/Delayed_Proof_of_Work_%28dPoW%29</a></p>
+<p>所有使用 dPoW 的区块链可增加安全，同时降低能耗。例如，Komodo 使用 Equihash 哈希算法防止使用 ASIC 挖矿。其公证人节点依赖于一种轮询挖矿方法，奖励机制考虑了降低节点间竞争的可能性。这些节点将会引发过度耗能或算力。</p>
+<p>此外通过非直接提供 Bitcoin 安全，Komodo 这类 dPoW 区块链可以向其它区块链添加价值，无需付出任何 Bitcoin 交易的代价。Komodo 此后附着到 Bitcoin，而第三个使用 dPoW 的区块链可以将自身附着到 Komodo。使用这种方式，dPoW 区块链不必直接附着到 Bitcoin 区块链，就从 Bitcoin 的高哈希率中受益。</p>
+<p>最后一点，公证人节点和正常节点分离的功能，确保了初始共识机制在公证人节点失败时继续运行。这种相互独立性建立了一种奖励机制，使得其它网络无需依赖于 Bitcoin 网络的直接功能，即可支持 Bitcoin 网络的继续维护。</p>
+<p><strong>扩展阅读</strong>：<a href="https://wiki.komodoplatform.com/wiki/Delayed_Proof_of_Work_%28dPoW%29" target="_blank" rel="noopener">Delegated-Proof of Work</a></p>
+<h2 id="4-授权-PoS（DPoS，Delegated-Proof-of-Stake）"><a href="#4-授权-PoS（DPoS，Delegated-Proof-of-Stake）" class="headerlink" title="4. 授权 PoS（DPoS，Delegated Proof-of-Stake）"></a>4. 授权 PoS（DPoS，Delegated Proof-of-Stake）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>节能。</li>
+<li>快速。高流量博客网站 <a href="https://steemit.com/" target="_blank" rel="noopener">Steemit</a> 就使用了它。EOS 的块时间是 0.5 秒。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>略为中心化。</li>
+<li>拥有高权益的参与者可投票使自己成为一名验证者。这是近期已在 EOS 中出现的问题。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://bitshares.org/" target="_blank" rel="noopener">BitShares</a>、<a href="https://steemit.com/" target="_blank" rel="noopener">Steemit</a>、<a href="https://eos.io/" target="_blank" rel="noopener">EOS</a>、<a href="https://lisk.io/" target="_blank" rel="noopener">Lisk</a>、<a href="https://ark.io/" target="_blank" rel="noopener">Ark</a>。</p>
+<p><strong>类型</strong>：协同型共识</p>
+<p><strong>解释</strong>：在 DPoS 系统中，权益持有者可以选举领导者（或称为见证人，Witness）。经权益持有者授权，这些领导者可进行投票。该机制使得 DPoS 要快于正常的 PoS。</p>
+<p>例如，EOS 中选举出 21 位见证人，并且有一堆节点（潜在的见证人）作为候选者。一旦见证人节点死亡或是做出了恶意行为，新节点就会立刻替代见证人节点。见证人会因为生成区块而获得一笔支付费用。该费用是由权益持有者设立的 。</p>
+<p>通常，所有节点采用轮询方式，一次生成一个区块。该机制防止一个节点发布连续的块，进而执行 “双重支付” 攻击。如果一个见证人在分配给他的时间槽中未生成区块，那么该时间槽就被跳过，并由下一位见证人生成下一个区块。如果见证人持续丢失他的区块，或是发布了错误的交易，那么权益持有者将投票决定其退出，用更好的见证人替换他。</p>
+<p>在 DPoS 中，矿工可以合作生成块，而不是像在 PoW 和 PoS 中那样竞争生成。通过区块生成的部分中心化，DPoS 的运行可以比其它共识算法呈数量级快。<a href="https://hackernoon.com/eos-101-getting-started-with-eos-part-1-ab0324c233e0" target="_blank" rel="noopener">EOS（使用了 DPoS）是首个实现 0.5 秒生成块的区块链！</a></p>
+<p>这非常快！</p>
+<p><strong>扩展阅读</strong>：<a href="https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md#consensus-algorithm-bft-dpos" target="_blank" rel="noopener">Delegated-Proof of Stake</a></p>
+<h2 id="5-权威证明（PoA，Proof-of-Authority）"><a href="#5-权威证明（PoA，Proof-of-Authority）" class="headerlink" title="5. 权威证明（PoA，Proof-of-Authority）"></a>5. 权威证明（PoA，Proof-of-Authority）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>节能。</li>
+<li>快速。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>略为中心化。虽然可用于公有区块链，但是通常用于私有区块链和许可区块链。</li>
+</ul>
+<p><strong>使用者</strong>：<a href="https://poa.network/" target="_blank" rel="noopener">POA.Network</a>、<a href="https://kovan.etherscan.io/" target="_blank" rel="noopener">Ethereum Kovan testnet</a>、<a href="https://en.wikipedia.org/wiki/VeChain" target="_blank" rel="noopener">VeChain</a>。</p>
+<p><strong>类型</strong>：协同型共识。</p>
+<p><strong>解释</strong>：基于 PoA 的网络、事务和区块，是由一些经认可的账户认证的，这些被认可的账户称为 “验证者”（Validator）。验证者运行的软件，支持验证者将交易（transaction）置于区块中。该过程是自动的，无需验证者持续监控计算机，但需要维护计算机（权威节点）不妥协（uncompromised）。</p>
+<p>验证者必须满足以下三个条件：</p>
+<ol>
+<li>其身份必须在链上得到正式验证，信息可在公有可用域中交叉验证。</li>
+<li>其资格必须难以获得，这样所得到的验证块的权利才弥足珍贵（例如，潜在的验证者需要获得公证书）。</li>
+<li>建立权威的检查和程序必须完全统一。</li>
+</ol>
+<p>使用 PoA，每个个体都具有变成验证者的权利，因此存在一旦获取就保持验证者位置的动机。通过对身份附加一个声誉，可以鼓励验证者去维护交易的过程。因为验证者并不希望让自己获得负面声誉，这会使其失去来之不易的验证者地位。</p>
+<p><strong>扩展阅读</strong>：<a href="https://en.wikipedia.org/wiki/Proof-of-authority" target="_blank" rel="noopener">Proof of Authority</a></p>
+<h2 id="6-权重证明（PoWeight，Proof-of-Weight）"><a href="#6-权重证明（PoWeight，Proof-of-Weight）" class="headerlink" title="6. 权重证明（PoWeight，Proof-of-Weight）"></a>6. 权重证明（PoWeight，Proof-of-Weight）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>节能。</li>
+<li>高度可定制和可扩展</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>可能难以实现激励。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://people.csail.mit.edu/nickolai/papers/gilad-algorand-eprint.pdf" target="_blank" rel="noopener">Algorand</a>。</p>
+<p><strong>类型</strong>：有竞争共识。</p>
+<p><strong>解释</strong>：权重证明（PoWeight）是一类很宽泛的共识算法，它基于 <a href="https://people.csail.mit.edu/nickolai/papers/gilad-algorand-eprint.pdf" target="_blank" rel="noopener">Algorand</a> 共识模型。其基本理念是在 PoS 中，用户所拥有的网络中令牌的百分比，表示了该用户 “发现” 下一个区块的概率。PoWeight 系统中还使用了其它一些相对加权值，实现包括声望证明（PoR，Proof of Reputation）和空间证明（Proof of Space）。</p>
+<p><strong>扩展阅读</strong>：<a href="https://people.csail.mit.edu/nickolai/papers/gilad-algorand-eprint.pdf" target="_blank" rel="noopener">Proof of Weight</a></p>
+<h2 id="7-声誉证明（PoR，Proof-of-Reputation）"><a href="#7-声誉证明（PoR，Proof-of-Reputation）" class="headerlink" title="7. 声誉证明（PoR，Proof of Reputation）"></a>7. 声誉证明（PoR，Proof of Reputation）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/36-1533408522361.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/36-1533408522361.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-db285107b0d9bd6a.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/36-1533408522361.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>非常适用于私有区块链和许可区块链。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>只能用于私有区块链和许可区块链。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://gochain.io/" target="_blank" rel="noopener">GoChain</a>。</p>
+<p><strong>类型</strong>：协同型共识。</p>
+<p><strong>解释</strong>：PoR 类似于 PoA。<a href="https://medium.com/gochain/proof-of-reputation-e37432420712" target="_blank" rel="noopener">GoChain 文档中给出了如下描述</a>：</p>
+<blockquote>
+<p>PoR 共识模型依赖参与者在保持网络安全中的声誉。参与者（区块签名者）必须具有足够重要的声誉。一旦他们尝试欺骗系统，那么他们将要面对严重的财政上的和自己名声上的后果。这是一个相对的概念，如果他们被抓到试图欺骗，那么几乎所有的业务将会受到严重的影响。规模越大的企业，通常将会失去更多。这样，相比使用更少的企业（即更小规模的商业），规模更大的企业更易于被选定。</p>
+</blockquote>
+<p>一旦一个企业证明了自己的声誉，并通过了验证，那么他们必须经投票参与到权威节点网络中。这时，PoR 的操作与 PoA 网络一样，即只有权威节点可以签名并验证区块。</p>
+<p>在 “扩展阅读” 中提供了更多详细信息。</p>
+<p><strong>扩展阅读</strong>：<a href="https://medium.com/gochain/proof-of-reputation-e37432420712" target="_blank" rel="noopener">Proof of Reputation</a></p>
+<h2 id="8-所用时间证明（PoET，Proof-of-Elapsed-Time）"><a href="#8-所用时间证明（PoET，Proof-of-Elapsed-Time）" class="headerlink" title="8. 所用时间证明（PoET，Proof of Elapsed Time）"></a>8. 所用时间证明（PoET，Proof of Elapsed Time）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>参与代价低。更多人可轻易加入，进而达到去中心化。</li>
+<li>对于所有参与者而言，更易于验证领导者是通过合法选举产生的。</li>
+<li>控制领导者选举过程的代价，是与从中获得的价值成正比的。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>尽管 PoET 的代价低，但是必须要使用特定的硬件。因此不会被大规模采纳。</li>
+<li>不适用于公有区块链。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://sawtooth.hyperledger.org/docs/" target="_blank" rel="noopener">HyperLedger Sawtooth</a></p>
+<p><strong>类型</strong>：有竞争共识</p>
+<p><strong>解释</strong>：PoET 共识机制算法通常用于许可区块链网络，它可决定网络中获得区块者的挖矿权利。许可区块链网络需要任何预期参与者在加入前验证身份。根据公平彩票系统的原则，每个节点具有同等的可能成为胜出者。PoET 机制赋予大量可能的网络参与者以平等胜出的机会。</p>
+<p>PoET 的工作机制如下：网络中的每位参与节点都必须等待一个随机选取的时期，首个完成设定等待时间的节点将获得一个新区块。区块链网络中的每个节点会生成一个随机的等待时间，并休眠一个设定的时间。最先醒来的节点，即具有最短等待时间的节点，唤醒并向区块链提交一个新区块，然后广播必要的信息到整个对等网络中。同一过程将会重复，以发现下一个区块。</p>
+<p>在 PoET 网络共识机制中，需要确保两个重要因素。第一，参与节点在本质上会自然地选取一个随机的时间，而非某一个参与者为胜出而刻意选取了较短的时间。第二，胜出者的确完成了等待时间。</p>
+<p>PoET 理念是由著名的芯片制造巨头 Intel 于 2016 年早期提出的。Intel 为解决 “随机领导者选举” 的计算问题，实现了一个可用的高科技工具。</p>
+<p>这种内在机制允许应用在受保护的环境中执行受信任的代码，它确保了上面提出的两个要求得到满足，即随机选择所有参与节点的等待时间，以及胜出参与者真正完成了等待时间。</p>
+<p>这种在安全环境中运行可信代码的机制也同时考虑到了其它一些网络的需求。它确保了受信代码的确运行在安全环境中，并不可被其它外部参与者更改。它也确保了结果可被外部参与者和实体验证，进而提高了网络共识的透明度。</p>
+<p>PoET 通过控制代价实现了共识过程，该代价依然是与从过程中获得的价值成正比。这是保证加密货币经济持续繁荣的一个关键需求。</p>
+<p><strong>扩展阅读</strong>：<a href="https://sawtooth.hyperledger.org/docs/core/nightly/0-8/introduction.html#proof-of-elapsed-time-poet" target="_blank" rel="noopener">Proof of Elapsed Time</a></p>
+<h2 id="9-容量证明（PoC，Proof-of-Capacity），也称为空间证明（PoSpace，Proof-of-Space）"><a href="#9-容量证明（PoC，Proof-of-Capacity），也称为空间证明（PoSpace，Proof-of-Space）" class="headerlink" title="9. 容量证明（PoC，Proof of Capacity），也称为空间证明（PoSpace，Proof of Space）"></a>9. 容量证明（PoC，Proof of Capacity），也称为空间证明（PoSpace，Proof of Space）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/667-1533408525447.jpg" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/667-1533408525447.jpg" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-38bbd9a46787cbc2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/667-1533408525447.jpg" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>它类似于 PoW，只是使用空间替代了计算。因此更加环境友好。</li>
+<li>可用于恶意软件检测。通过确定处理器的 L1 缓存是否为空（例如，具有足够空间在没有缓存未命中的情况下计算 PoSpace 过程），或是包含一个拒绝被逐出（evicted）的例程。</li>
+<li>可用于反垃圾邮件措施，以及防范拒绝服务（DoS）攻击。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>激励机制可能存在问题。</li>
+</ul>
+<p><strong>使用者</strong>： <a href="https://www.burst-coin.org/" target="_blank" rel="noopener">Burstcoin</a>、<a href="https://chia.network/" target="_blank" rel="noopener">Chia</a>、<a href="https://dci.mit.edu/research/spacemint-cryptocurrency-mining" target="_blank" rel="noopener">SpaceMint</a>。</p>
+<p><strong>类型</strong>：协同型共识。</p>
+<p><strong>解释</strong>：PoSpace，也称为 PoC，通过分配一定数量的内存或磁盘空间用于解决服务提供者所提供挑战的方式，显示了某个人对某个服务（例如发送邮件）具有合法的兴趣。该理念是由 Dziembowski 等在 2015 年形式化定义的。虽然 Ateniese 等人的论文名称也是 “Proof-of-space”，但它事实上一种采用 MHF（Memory Hard Function，一种计算代价取决内存的哈希算法）的 PoW 协议。</p>
+<p>PoSpace 非常类似于 PoW，只是使用存储替代了 Pow 中的计算。PoSpace 与 MHF 和可回收性证明（PoR，Proof of Retrievability）有关，但也在很大程度上存在着差异。</p>
+<p>PoSpace 是由证明者 (Prover) 发送给验证者 (Verifier) 的一小块数据，该数据确认了证明者已经保留了一定量的空间。出于实用性上的考虑，验证过程需要尽量高效，即消耗尽可能少的空间和时间。出于公平性上的考虑，如果验证者没有保留所声明数量的空间，那么它应该难以通过验证。PoSpace 的一种实现方式是通过使用一个难以实现 Pebbling 的图。验证者请求证明者构建对一个“<a href="https://en.wikipedia.org/wiki/Graph_pebbling" target="_blank" rel="noopener">非 Pebbling 图</a>” 标记。证明者提交标记，进而验证者请求证明者在提交中开放多个随机位置。</p>
+<p>由于存储的通用本质，以及存储所需的更低耗能，PoSpace 被认为是一种更公平、更绿色的替换方法。</p>
+<p><strong>扩展阅读</strong>：<a href="https://en.wikipedia.org/wiki/Proof-of-space" target="_blank" rel="noopener">Proof of Space</a></p>
+<h2 id="10-历史证明（PoHistory，Proof-of-History）"><a href="#10-历史证明（PoHistory，Proof-of-History）" class="headerlink" title="10. 历史证明（PoHistory，Proof of History）"></a>10. 历史证明（PoHistory，Proof of History）</h2><p><strong>采用者</strong>：<a href="https://solana.io/" target="_blank" rel="noopener">Solana</a></p>
+<p><strong>解释</strong>：其基本理念是不相信交易中的时间戳，而是证明交易在某个事件之前或之后的某个时刻发生。</p>
+<p>如果我们对某期《纽约时报》的封面拍了张照片，那么我们就创建了一个证明，即我们的拍照时间是在该报纸发行之后，或许也可能是我们有某种途径影响了纽约时报的正常发行。我们可以使用 PoHistory 创建一个历史记录，证明一个事件是发生在特定时间之后的。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/1998-1533408524126.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/1998-1533408524126.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-ef846a48c3d33e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/360/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/1998-1533408524126.png" target="_blank" rel="noopener"></a></p>
+<p>PoHistory 是一种高频<a href="https://www.youtube.com/watch?v=qUoagL7OZ1k" target="_blank" rel="noopener">可验证延迟函数（VDF，Verifiable Delay Function）</a>。VDF 求值需要完成特定数量的顺序步骤，然后生成一个唯一的输出。该输出可被高效地和公开地验证。</p>
+<p>VDF 的一个特定实现使用了持续运行于其上的顺序抗预映射哈希（Pre-image Resistant Hash），其中前一次循环生成的输出将用于下一次循环的输入。计数和当前输出形成周期性记录。</p>
+<p>如果使用了 SHA256 哈希函数，那么不使用 2<sup>128</sup> 核的暴力攻击，该过程是不可能并行化的。</p>
+<p>因此我们可以确认，每个计数器在生成过程中都的确经历了一定的时间。进而，每个计数器记录的顺序与实时情况是一致的。</p>
+<p>在 “扩展阅读” 中提供了更多详细信息。</p>
+<p><strong>扩展阅读</strong>：<a href="https://medium.com/solana-labs/proof-of-history-a-clock-for-blockchain-cf47a61a9274" target="_blank" rel="noopener">Proof of History</a></p>
+<h2 id="11-权益流通证明（PoSV，Proof-of-Stake-Velocity）"><a href="#11-权益流通证明（PoSV，Proof-of-Stake-Velocity）" class="headerlink" title="11. 权益流通证明（PoSV，Proof of Stake Velocity）"></a>11. 权益流通证明（PoSV，Proof of Stake Velocity）</h2><p><strong>采用者</strong>：<a href="https://www.reddcoin.com/" target="_blank" rel="noopener">Reddcoin</a></p>
+<p>解释：PoSV 是作为 PoW 和 PoS 的一种替代方法而提出的，其目的是提高 P2P 网络的安全性，进而用于确认 Reddcoin 交易。Reddcoin 是一种加密货币，专为加速数字化时代的社交交互而提出的。PoSV 在设计上鼓励所有者（权益）和活动（流通），直接对应于 Reddcoin 作为真实货币的两个主要功能，即存储价值和交换中介。Reddcoin 也可在异构社交场景中作为计量单位使用。</p>
+<p>在 “扩展阅读” 中提供了更多详细信息。</p>
+<p><strong>扩展阅读</strong>：<a href="https://www.reddcoin.com/papers/PoSV.pdf" target="_blank" rel="noopener">Proof of Stake Velocity</a></p>
+<h2 id="12-重要性证明（PoImportance，Proof-of-Importance）"><a href="#12-重要性证明（PoImportance，Proof-of-Importance）" class="headerlink" title="12. 重要性证明（PoImportance，Proof of Importance）"></a>12. 重要性证明（PoImportance，Proof of Importance）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>在权益计算方面要优于 PoS。</li>
+</ul>
+<p><strong>使用者</strong>：<a href="https://nem.io/" target="_blank" rel="noopener">NEM</a></p>
+<p><strong>解释</strong>：NEM 共识网络不仅依赖于代币的数量，而且依赖于生成系统行动得到回报的可能性。区块收益机率是各种因素之一，此外还包括不好的名声（受控于不同的框架设计目的）、差额，以及从该处做出和得到的交易数量。它也被称为 “重要性计算”（Importance Calculation），因为它可为“有用的” 系统成员提供更全面的图像。</p>
+<p>一名用户要具有资格执行重要性计算，其账户余额至少需要为 10000 枚 XEM。考虑到只有不到 90 亿枚 XEM 在流通，实现这一目标并非过于昂贵。在未来 10000 枚 XEM 的阈值有可能会发生变化，但就目前而言，它仍然没有变化。重要性计算是使用特定算法完成的，而不仅仅考虑用户份额的概率和规模。</p>
+<p>需要指出的是，NEM 的 PoImportance 对任何操控都具有抵制力。该共识的底层机制可缓解女巫攻击（Sybil Attack）和循环攻击问题。谨记，“PoImportance 并非 PoS”，尽管两者很容易被同等看待。</p>
+<p><strong>扩展阅读</strong>：<a href="https://www.nem.io/wp-content/themes/nem/files/NEM_techRef.pdf#section.7" target="_blank" rel="noopener">Proof of Importance</a></p>
+<h2 id="13-烧毁证明（PoBurn，Proof-of-Burn）"><a href="#13-烧毁证明（PoBurn，Proof-of-Burn）" class="headerlink" title="13. 烧毁证明（PoBurn，Proof of Burn）"></a>13. 烧毁证明（PoBurn，Proof of Burn）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/49-1533408523453.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/49-1533408523453.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-9b41d5ddb6e53d3b.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/49-1533408523453.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>采用者</strong>：<a href="http://www.slimcoin.club/" target="_blank" rel="noopener">Slimcoin</a>、TGCoin（第三代代币）。</p>
+<p><strong>解释</strong>：PoBurn 并非在昂贵的计算设备上一掷千金，而通过发送代币到一个不可检索地址实现 “烧钱”（Burn）。将代币发送到一个并不存在的地址，用户将根据某个随机选择过程，获得整个生命时间内对系统挖矿的特权。</p>
+<p>PoBurn 有多种实现方式，矿工可以烧毁原生的货币，或者烧毁一些其它区块链的货币，例如比特币等。烧毁的代币越多，用户就越有机会被选中去挖掘下一个区块。</p>
+<p>随时间的流逝，用户在系统的权益会得到弱化。因此，最终用户为增加在这个博彩中被选中的机会，会考虑烧掉更多的代币（这可类比于比特币的挖矿过程，用户必须不断投资更现代的计算设备以维持哈希能力）。</p>
+<p>尽管 PoBurn 是一种有意思的 PoW 替代者，但是该协议依然会毫无必要地浪费资源。另一个批评是，挖矿能力只会偏向于那些愿意烧掉更多钱的人。</p>
+<h2 id="14-身份证明（PoI，Proof-of-Identity）"><a href="#14-身份证明（PoI，Proof-of-Identity）" class="headerlink" title="14. 身份证明（PoI，Proof of Identity）"></a>14. 身份证明（PoI，Proof of Identity）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/810-1533408525751.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/810-1533408525751.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-85e0a6ce73878d00.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/810-1533408525751.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>解释</strong>：PoI 是一块表示了加密事实的数据。它支持用户指定一个私钥，并对应到一个经认证的身份，加密将附着到一个指定的交易。来自于某些组中的每个个体都可以创建 PoF(因为它只是一块数据)，并将该数据展示给其它任何处理节点的人。</p>
+<p><strong>扩展阅读</strong>：<a href="https://www.reddit.com/r/CryptoUBI/comments/2v2gi6/proof_of_identityproof_of_person_the_elephant_in/" target="_blank" rel="noopener">Proof of Identity</a></p>
+<h2 id="15-活动证明（PoActivity，Proof-Of-Activity）"><a href="#15-活动证明（PoActivity，Proof-Of-Activity）" class="headerlink" title="15. 活动证明（PoActivity，Proof Of Activity）"></a>15. 活动证明（PoActivity，Proof Of Activity）</h2><p><strong>使用者</strong>：<a href="https://www.decred.org/" target="_blank" rel="noopener">Decred</a></p>
+<p><strong>解释</strong>：为避免出现恶性通货膨胀（当大量货币充斥系统时就会发生），比特币将只生成两千一百万枚。这意味着，在某些时候，比特币区块奖励补贴将终止，比特币矿工将只能收取交易费用。</p>
+<p>一些人猜测这可能会导致由 “<a href="https://en.wikipedia.org/wiki/Tragedy_of_the_commons" target="_blank" rel="noopener">公地悲剧（Tragedy of the commons）</a>” 所引发的安全问题，人们出于自身利益考虑行事并破坏系统。因此，人们提出了 <a href="https://eprint.iacr.org/2014/452.pdf" target="_blank" rel="noopener">PoActivity</a> 作为一种替代 Bitcoin 的激励结构。PoActivity 是一种结合了 PoW 和 PoS 的混合方法。</p>
+<p>在 PoActivity 中，挖矿一开始使用的是传统的 PoW，矿工们争相解决加密难题。根据实现，挖掘的区块不包含任何交易，它们更像模板。因此，胜出的区块将只包含头部信息，以及矿工的奖励地址。</p>
+<p>此时，系统将切换到 PoS。PoActivity 根据头部信息选择一组随机验证者对新区块签名。如果一位验证者所拥有的系统中代币越多，那么该验证者被选中的可能性也会越大。一旦所有验证者已签名，那么模板就会变成一个完整的区块。</p>
+<p>如果在完成区块时，某些选定的验证者是不可用的，那么就选择下一个胜出区块，并选择一组新的验证者，依此类推，直到区块收到到正确数量的签名。费用由矿工和在区块上签名的验证者分摊。</p>
+<p>对 PoActivity 的批评包括挖掘区块耗能过高（与 PoW 一样），以及无法阻止验证者做双重签名（与 PoS 一样）。</p>
+<h2 id="16-时间证明（PoTime，Proof-of-Time）"><a href="#16-时间证明（PoTime，Proof-of-Time）" class="headerlink" title="16. 时间证明（PoTime，Proof of Time）"></a>16. 时间证明（PoTime，Proof of Time）</h2><p><strong>使用者</strong>：<a href="https://chronologic.network/" target="_blank" rel="noopener">Chronologic</a></p>
+<p><strong>解释</strong>：PoTime 是一种由 Chronologic 提出的共识算法。Chronologic 设计构建一种独立的区块链，其首席开发人员提出：</p>
+<blockquote>
+<p>我们的问题在于，Solidity 中一个变量可存储的最大数是 1076 的数量级。这使我们很难处理时间生成和令牌生成。<br><strong>扩展阅读</strong>：<a href="https://chronologic.network/uploads/Chronologic_Whitepaper.pdf" target="_blank" rel="noopener">Proof of Time</a></p>
+</blockquote>
+<h2 id="17-存在证明（PoExistence，Proof-of-Existence）"><a href="#17-存在证明（PoExistence，Proof-of-Existence）" class="headerlink" title="17. 存在证明（PoExistence，Proof of Existence）"></a>17. 存在证明（PoExistence，Proof of Existence）</h2><p><strong>使用者</strong>：<a href="https://poex.io/" target="_blank" rel="noopener">Poex.io</a>、<a href="https://heronode.io/" target="_blank" rel="noopener">HeroNode</a>、<a href="https://dragonchain.github.io/" target="_blank" rel="noopener">DragonChain</a>。</p>
+<p><strong>解释</strong>：PoExistence 是一种在线服务，它通过<a href="https://en.wikipedia.org/wiki/Bitcoin" target="_blank" rel="noopener">比特币</a><a href="https://en.wikipedia.org/wiki/Blockchain_%28database%29" target="_blank" rel="noopener">区块链</a>对交易<a href="https://en.wikipedia.org/wiki/Timestamp" target="_blank" rel="noopener">打时间戳</a>，验证在特定时间是否存在<a href="https://en.wikipedia.org/wiki/Computer_file" target="_blank" rel="noopener">计算机文件</a>。</p>
+<p>PoExistence 是作为一项<a href="https://en.wikipedia.org/wiki/Open-source_software" target="_blank" rel="noopener">开源项目</a>在 2013 年提出的，由 Manuel Araoz 和 Esteban Ordano 开发。</p>
+<p>用例：</p>
+<ul>
+<li>不泄露实际内容的数字签署协议（Digital Sign Agreement）。</li>
+<li>不泄露实际数据，展示数据的属主。</li>
+<li>记录时间戳。</li>
+<li>证明属主。</li>
+<li>检查文档完整性。</li>
+</ul>
+<p><strong>扩展阅读</strong>：<a href="https://en.wikipedia.org/wiki/Proof_of_Existence" target="_blank" rel="noopener">Proof of Existence</a></p>
+<h2 id="18-Ouroboros"><a href="#18-Ouroboros" class="headerlink" title="18. Ouroboros"></a>18. Ouroboros</h2><p><strong>采用者</strong>：<a href="https://www.cardano.org/" target="_blank" rel="noopener">Cardano</a></p>
+<p><strong>解释</strong>：Ouroboros 是 Cardano 使用的共识算法。它是 PoS 的一个变种，具有严格的安全性保证。</p>
+<p><strong>扩展阅读</strong>：<a href="https://eprint.iacr.org/2016/889.pdf" target="_blank" rel="noopener">Ouroboros</a></p>
+<h2 id="19-可收回证明（PoR，Proof-of-Retrievability）"><a href="#19-可收回证明（PoR，Proof-of-Retrievability）" class="headerlink" title="19. 可收回证明（PoR，Proof of Retrievability）"></a>19. 可收回证明（PoR，Proof of Retrievability）</h2><p><strong>采用者</strong>：<a href="https://www.youtube.com/watch?v=uJqe6XUEWd4" target="_blank" rel="noopener">Microsoft</a></p>
+<p><strong>解释</strong>：PoR 是一种紧凑证明，表示文件系统（证明者）中的目标文件 F 对客户端（验证者）而言是完整的。由于使用 PoR 比传输文件 F 本身而言具有更低的通信复杂性，因此 PoR 对于构建高可靠的远程存储系统是一种颇具吸引力的构建模块。作为一种共识算法，PoR 对于云计算系统非常有用。</p>
+<p>在 “扩展阅读” 中提供了更多详细信息。</p>
+<p><strong>扩展阅读</strong>：<a href="https://eprint.iacr.org/2008/175.pdf" target="_blank" rel="noopener">Proof of Retrievability</a></p>
+<h2 id="20-拜占庭容错（Byzantine-Fault-Tolerance）"><a href="#20-拜占庭容错（Byzantine-Fault-Tolerance）" class="headerlink" title="20. 拜占庭容错（Byzantine Fault Tolerance）"></a>20. 拜占庭容错（Byzantine Fault Tolerance）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/11811-1533408523857.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/11811-1533408523857.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-72eb51551df4529c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/11811-1533408523857.png" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>高速。</li>
+<li>可扩展。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>通常用于私有网络和许可网络。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://www.hyperledger.org/projects/fabric" target="_blank" rel="noopener">Hyperledger Fabric</a>、<a href="https://www.stellar.org/" target="_blank" rel="noopener">Stellar</a>、<a href="https://ripple.com/" target="_blank" rel="noopener">Ripple</a>、<a href="https://t.me/dispatchlabs" target="_blank" rel="noopener">Dispatch</a></p>
+<p><strong>解释</strong>：拜占庭将军问题是分布式计算中的一个经典问题。问题描述为，几位<a href="https://web.archive.org/web/20170205142845/http://lamport.azurewebsites.net/pubs/byz.pdf" target="_blank" rel="noopener">拜占庭将军</a>分别率领部队合力包围了一座城市。他们必须一致决定是否发起攻城。如果一些将军在没有其他将军参与的情况下决定发起攻城，那么他们的行动将以失败告终。将军们之间相互隔着一定的距离，必须依靠信息传递进行交流。 一些加密货币协议在达成共识时使用了特定版本的 BFT，每种版本都具有各自的优缺点：</p>
+<p><strong>实用拜占庭容错（PBFT，Practical Byzantine Fault Tolerance）</strong>：首个提出的该问题解决方案称为 <a href="http://pmg.csail.mit.edu/papers/osdi99.pdf" target="_blank" rel="noopener">“实用拜占庭容错”（PBFT）</a>，当前已被 Hyperledger Fabric 采用。PBFT 使用了较少（少于 20 个，之后会稍有增加）的预选定将军数，因此运行非常高效。它的优点是高交易通量和吞吐量，但是不足之处在于是中心化的，并用于许可网络。</p>
+<p><strong>联邦拜占庭协议（FBA，Federated Byzantine Agreement）</strong>：另一类拜占庭将军问题的解决方案是 FBA，已被 Stellar 和 Ripple 等代币使用。FBA 的通用理念是每个拜占庭将军负责自身的链、消息一旦到来，通过排序建立事实。在 Ripple 中，将军（验证者）是 Ripple 基金会预先选定的。在 Stellar 中，任何人都可以成为验证者，需要用户选择去相信哪个验证者。</p>
+<p>由于 FBA 可提供令人难以置信的吞吐量、低交易开销和网络扩展性，我相信 FBA 类公式算法是目前提出的最好的分布式共识发现算法。</p>
+<h2 id="21-授权拜占庭容错算法（dBFT，Delegated-Byzantine-Fault-Tolerance）"><a href="#21-授权拜占庭容错算法（dBFT，Delegated-Byzantine-Fault-Tolerance）" class="headerlink" title="21. 授权拜占庭容错算法（dBFT，Delegated Byzantine Fault Tolerance）"></a>21. 授权拜占庭容错算法（dBFT，Delegated Byzantine Fault Tolerance）</h2><p><strong>优点</strong>：</p>
+<ul>
+<li>快速。</li>
+<li>可扩展。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>每个人都争相成为根链。其中可能存在多个根链。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://neo.org/" target="_blank" rel="noopener">Neo</a>。</p>
+<p><strong>解释</strong>：授权拜占庭容错算法，简称 dBFT，是一种支持通过代理投票实现大规模参与共识的拜占庭容错共识算法。在 Neo 中，令牌持有者可以通过投票选取其支持的 bookkeeper。之后，选定的 bookkeeper 组采用 BFT 算法达成共识，并生成新区块。Neo 网络中的投票是实时的，而非因人而异的。</p>
+<p>dBFT 可为具有个共识节点的共识系统提供</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-48a0e79133b581d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/76/format/webp" alt="image"></p>
+<p>容错。这种容错也涵盖了安全性和可用性、不受将军和拜占庭错误影响，并且适合任何网络环境。dBFT 具有很好的最终性（finality），这意味着一旦最终确认，区块将不可分叉，交易将不可再撤销或是回滚。</p>
+<p>Neo 的 dBFT 机制生成一个区块需 15 到 20 秒钟。交易吞吐量测定约为 1000 TPS。这对于公共区块链而言，这是很好的性能。通过一定优化，dBFT 具有达到一万 TPSS 的潜力，这样就可支持大规模的商业应用。</p>
+<p>dBFT 中加入了数字身份技术，这意味着 bookkeeper 可以是真实的个人，也可以是某些机构。因此，dBFT 根据存在于其本身之中的司法判决，可以冻结、撤销、继承、检索和拥有代币兑换权。它有利于实现合规金融资产在 Neo 网络中的注册。Neo 网络从设计上，就是在必要时为此提供支持。</p>
+<p><strong>扩展阅读</strong>：<a href="https://github.com/neo-project/docs/blob/master/en-us/index.md#neo-technology-implementation" target="_blank" rel="noopener">dBFT</a></p>
+<h2 id="22-RAFT"><a href="#22-RAFT" class="headerlink" title="22. RAFT"></a>22. RAFT</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/712-1533408980657.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/712-1533408980657.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-a0633c03ff6a055b.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/424/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/712-1533408980657.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>模型比 <a href="https://en.wikipedia.org/wiki/Paxos_%28computer_science%29" target="_blank" rel="noopener">Paxos</a> 更简单，但提供了同等的安全性。</li>
+<li>有多种语言的实现可用。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>通常用于私有网络和许可网络。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://medium.com/coinmonks/setting-up-your-first-distributed-private-storage-network-on-ipfs-part-1-a6ff15222b90" target="_blank" rel="noopener">IPFS Private Cluster</a>、<a href="https://hackernoon.com/quorum-101-getting-started-with-quorum-9906294ea45b" target="_blank" rel="noopener">Quorum</a>。</p>
+<p><strong>解释</strong>：Raft 是一种是设计用于替代 <a href="https://en.wikipedia.org/wiki/Paxos_%28computer_science%29" target="_blank" rel="noopener">Paxos</a> 的<a href="https://en.wikipedia.org/wiki/Consensus_%28computer_science%29" target="_blank" rel="noopener">共识算法</a>。它的本意就是通过实现逻辑分离，比 Paxos 更易于理解。但是它也可以通过形式化证明是安全的，并提供了一些额外的特性。Raft 提供一种在计算系统<a href="https://en.wikipedia.org/wiki/Computer_cluster" target="_blank" rel="noopener">集群</a>中实现分布<a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank" rel="noopener">状态机</a>的通用方式，确保了集群中的每个节点在同一组状态转移上取得一致。它具有一系列的开源参考实现，包括 <a href="https://en.wikipedia.org/wiki/Go_%28programming_language%29" target="_blank" rel="noopener">Go</a>、<a href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank" rel="noopener">C++</a>、<a href="https://en.wikipedia.org/wiki/Java_%28programming_language%29" target="_blank" rel="noopener">Java</a>、<a href="https://en.wikipedia.org/wiki/Scala_%28programming_language%29" target="_blank" rel="noopener">Scala</a> 等语言的完全声明实现。</p>
+<p>Raft 通过选取领导者实现共识。在 Raft 集群中，一个服务器可以是领导者（leader），也可以是追随者（follower），也可以作为一些特定选举情况下（例如缺少领导者）的候选者。领导者负责向追随者发送日志副本。领导者通过发送心跳消息，定期通知追随者自身的存活情况。每位追随者维护一个超时（通常在 150 到 300 毫秒之间），正常情况下应在此时间范围内收到领导者的心跳。一旦收到心跳，超时就会重置。如果没有收到心跳，那么追随者就将自身状态更改为候选者，并开始领导者选举。</p>
+<p><strong>为理解 RAFT，我强烈推荐<a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener">该信息图</a>。</strong></p>
+<p><strong>扩展阅读</strong>：<a href="https://en.wikipedia.org/wiki/Raft_%28computer_science%29" target="_blank" rel="noopener">Raft</a>。</p>
+<h2 id="23-恒星共识（Stellar-Consensus）"><a href="#23-恒星共识（Stellar-Consensus）" class="headerlink" title="23. 恒星共识（Stellar Consensus）"></a>23. 恒星共识（Stellar Consensus）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/413-1533408978114.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/413-1533408978114.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-0c9ba933ac520bea.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/413-1533408978114.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>去中心化控制。</li>
+<li>低延迟。</li>
+<li>灵活的信任机制。</li>
+<li>渐进安全（Asymptotic security）。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://www.stellar.org/" target="_blank" rel="noopener">Stellar</a></p>
+<p>解释：恒星共识基于上文介绍的联邦拜占庭共识（FBA）。</p>
+<p>恒星共识协议（SCP，Stellar Consensus Protocol）提供了一种不依赖闭合系统实现准确记录金融交易而达成共识的方法。SCP 具有一组可验证的安全属性，这些属性根据如何安全地保持活力而做了优化。一旦出现分区或不当行为节点，它将会终止网络过程，直至达成共识。SCP 同时具备四种属性：去中心控制、低延迟、灵活信任机制和渐进安全。</p>
+<p><strong>扩展阅读</strong>：<a href="https://www.stellar.org/papers/stellar-consensus-protocol.pdf" target="_blank" rel="noopener">Stellar Consensus</a></p>
+<h2 id="24-置信度证明（PoB，Proof-of-Believability）"><a href="#24-置信度证明（PoB，Proof-of-Believability）" class="headerlink" title="24. 置信度证明（PoB，Proof of Believability）"></a>24. 置信度证明（PoB，Proof of Believability）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/2014-1533408979912.jpg" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/2014-1533408979912.jpg" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-8ef00ada2a542763.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/2014-1533408979912.jpg" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>通过使用一种称为 “Servi” 的理念，PoB 比传统 PoS 更加去中心化（细节在下文给出）。</li>
+<li>相比于传统的 PoS，具有更快的最终性（Finality）。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://iost.io/" target="_blank" rel="noopener">IOST</a></p>
+<p><strong>解释</strong>：传统的 PoS 共识机制面临的主要挑战是趋向于中心化。为了降低这种风险，IOST 引入了 “Servi” 概念。Servi 不仅衡量了用户对社区的贡献，而且鼓励成员为 IOSChain 的持续发展做出贡献。Servi 具有以下属性：</p>
+<ul>
+<li><strong>不可交易性（Non-tradable）</strong>：由于 Servi 并非设计作为一种交换媒介，因此 Servi 不能以任何方式交易或做交换。</li>
+<li><strong>自毁性（Self-destructive）</strong>：验证区块后，系统将自动清除验证者拥有的 Servi 余额。通过这种方式，具有高可信度分值的节点可轮流验证区块，确保了公平区块的生成。</li>
+<li><strong>自发行性（Self-issuance）</strong>:Servi 在做出某些贡献之后（例如，提供社区服务、估其他实体提供的服务，以及其它一些特殊贡献），将会自动生成并存入用户帐户。</li>
+</ul>
+<p>传统的区块链系统在安全性和吞吐量间存在着固有的折衷，具体取决于分片（shard）的大小。具有大量小分片的系统可提供更好的性能，但抵抗不良行为者的稳定性低，反之也是如此（这也是 Casper 面临的一个问题）。为了在保持安全和提高吞吐量的情况下打破这种权衡，IOST 创新性地提出了一种用于 IOSChain 的 PoB 共识协议。PoB 确保了节点产生行为不端的可能性微乎其微，同时通过确定分片规模（size-one-shard），显著地提高了交易吞吐量。</p>
+<p>PoB 共识协议使用一种分片内 “可信度优先” 的方法。该协议将所有的验证者分为两组，一组是可信的联盟，另一组是正常的联盟。在第一阶段，可信的验证者快速地处理交易。之后在第二阶段，普通验证者对交易做抽样并验证，提供最终结果，确保可验证性。节点被选入可信联盟的机会是由可信度分值确定的。可信度分值由多个因素计算，包括令牌余额、对社区的贡献、评论等。具有较高可信度分值的人，更有可能被选入可信联盟。可信验证者遵循一定的程序，决定已提交的交易及其订单的集合，并按顺序处理它们。可信验证者也会构成一些较小的组，甚至可以每组一名验证者。交易将在这些可信验证者之间随机分配。因此，PoB 会产生具有极低延迟的较小区块。</p>
+<p>但是，由于只有一个节点在执行验证，因此 PoB 可能会存在安全问题。行为不当的验证者可能会提交一些已损坏的交易。为了解决这个安全问题，PoB 指定了一个采样概率。普通验证者根据概率对交易做采样，并检测交易的不一致性。如果验证者被检测出存在不良行为，那么该验证者将会失去所有系统中的令牌和声誉，而被欺诈的用户将获得所有损失的补偿。“可信度优先” 使处理交易非常快，因为只有一个（可信的）验证者执行验证，并且该验证者不太可能存在行为不端。</p>
+<p>关于分片策略的更多信息，可参阅 “扩展阅读” 内容。</p>
+<p><strong>扩展阅读</strong>：<a href="https://github.com/iost-official/Documents/blob/master/Technical_White_Paper/EN/Tech_white_paper_EN.md#consensus-mechanism" target="_blank" rel="noopener">Proof of Believability</a></p>
+<h2 id="25-有向无环图（DAG，Directed-Acyclic-Graphs）"><a href="#25-有向无环图（DAG，Directed-Acyclic-Graphs）" class="headerlink" title="25. 有向无环图（DAG，Directed Acyclic Graphs）"></a>25. 有向无环图（DAG，Directed Acyclic Graphs）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/515-1533408981048.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/515-1533408981048.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-e391e62614fd210e.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/794/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/515-1533408981048.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>由于 DAG 的非线性结构，它是高度可扩展的。</li>
+<li>快速。</li>
+<li>节能。</li>
+<li>立即实现终结性（Finality）。</li>
+</ul>
+<p><strong>不足</strong>：</p>
+<ul>
+<li>只能通过使用 Oracle 实现智能合约。</li>
+</ul>
+<p><strong>采用者</strong>：<a href="https://iota.org/" target="_blank" rel="noopener">Iota</a>、<a href="http://www.hederahashgraph.com/" target="_blank" rel="noopener">HashGraph</a>、<a href="https://byteball.org/" target="_blank" rel="noopener">Byteball</a>、<a href="https://raiblocks.net/" target="_blank" rel="noopener">RaiBlocks/Nano</a>。</p>
+<p><strong>解释</strong>：DAG 是一种更通用形式的区块链。由于其独特结构，DAG 内在支持高可扩展性，因此也得到了广泛的使用。</p>
+<p>从根本上说，任何区块链系统都具有线性结构，因为区块是依次添加到链中的。这使得相比于并行向链中添加区块，线性区块链在本质上是非常缓慢的。但是对于 DAG 而言，每个区块和交易只需数个前期区块得到确认，就可以并行地添加到区块和交易中。这意味着，DAG 在本质上是高可扩展的。</p>
+<p>DAG 存在多种变体，取决于：</p>
+<ul>
+<li>如何选取前期区块验证的算法，也称为 “Tip 选择算法”。</li>
+<li>交易完成的顺序。</li>
+<li>如何抵达完成状态。</li>
+</ul>
+<p>下面列出一些广为使用的 DAG 项目。</p>
+<h2 id="25-1-Tangle（IOTA）"><a href="#25-1-Tangle（IOTA）" class="headerlink" title="25.1 Tangle（IOTA）"></a>25.1 Tangle（IOTA）</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/316-1533408978910.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/316-1533408978910.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-346337a7763e5855.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/316-1533408978910.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>解释</strong>：<a href="https://iota.org/IOTA_Whitepaper.pdf" target="_blank" rel="noopener">Tangle</a> 是一种 DAG 共识算法，由 IOTA 使用。为了发送一个 IOTA 交易，用户需要验证接收到的前两个交易。在更多交易添加到 Tangle 的情况下，这种二对一、前瞻性支付的共识可加强交易的有效性。由于共识是由交易确定的，因此理论上，如果有人可以生成三分之一的交易，那么他就可以说服网络中的其余部分，使得他的无效交易变成有效的。一旦交易量足够大，使得个人难以创建三分之一交易量，这时 IOTA 就会在一个称为 “<a href="https://domschiener.gitbooks.io/iota-guide/content/chapter1/current-role-of-the-coordinator.html" target="_blank" rel="noopener">协调器（The Coordinator）</a>” 的中心节点上对网络中的所有交易做 “复核”（double-checking）。按 ITOA 的说法，协调员的工作类似于辅助轮。一旦 Tangle 达到一定的规模，协调员就会被从中移除。</p>
+<p><strong>扩展阅读</strong>： <a href="https://assets.ctfassets.net/r1dr6vzfxhev/2t4uxvsIqk0EUau6g2sw0g/45eae33637ca92f85dd9f4a3a218e1ec/iota1_4_3.pdf" target="_blank" rel="noopener">Tangle</a></p>
+<h2 id="25-2-Hashgraph"><a href="#25-2-Hashgraph" class="headerlink" title="25.2 Hashgraph"></a>25.2 Hashgraph</h2><p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/517-1533408980175.gif" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/517-1533408980175.gif" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-243c197628b63615.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/517-1533408980175.gif" target="_blank" rel="noopener"></a></p>
+<p><strong>解释</strong>：Hashgraph 是由 Leemon Baird 开发的一种 Gossip 协议共识。节点随机与其它节点共享自身已知的交易，最终所有交易都被以 Gossip 协议传播到（Gossip around）到所有节点。Hashgraph 对于私有网络是一个很好的选择。但我们并不会看到它实现在以太坊这样的公共网络中，或是不通过 Gossip 协议随机传播交易。</p>
+<p><strong>扩展阅读</strong>：<a href="https://www.hederahashgraph.com/whitepaper" target="_blank" rel="noopener">HashGraph</a></p>
+<h2 id="25-3-Holochain"><a href="#25-3-Holochain" class="headerlink" title="25.3 Holochain"></a>25.3 Holochain</h2><p><strong>解释</strong>：Holochain 十分类似于 HashGraph，但不同于 Hashgraph。它提供了一种可用于构建去中心化应用的数据结构。用户可以具有自己的链，并向其中添加包括金融交易在内的数据。链可以采用复杂的方式合并、拆分和交互。数据以去中心化的方式存储（类似于 Bittorrent）。数据具有一个哈希值，即一个对应于数据的数学指纹。如果有人意图篡改数据，那么我们就会注意到在数据和哈希值之间存在不匹配，这样就可拒绝数据为无效的。数字签名保证了数据的作者身份。Holochain 可看成是 “Bittorrent+git + 数字签名”。</p>
+<p><strong>扩展阅读</strong>：<a href="https://github.com/Holochain/holochain-proto/blob/whitepaper/holochain.pdf" target="_blank" rel="noopener">HoloChain</a></p>
+<h2 id="25-4-Block-Lattice（Nano）"><a href="#25-4-Block-Lattice（Nano）" class="headerlink" title="25.4 Block-Lattice（Nano）"></a>25.4 Block-Lattice（Nano）</h2><p><strong>解释</strong>：Nano（以前称为 Raiblocks）是以缠绕在区块链上的方式运行，这种方式被称为 “块状格子”（Block-lattice）。在 Block-lattice 结构中，每个用户（地址）都有自己的链，只有用户本身可写，每个用户都拥有所有链的副本。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/4418-1533408981761.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/4418-1533408981761.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-81a1e254bc53e651.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/385/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/4418-1533408981761.png" target="_blank" rel="noopener"></a></p>
+<p>每个交易都可分解为发送者链上的发送区块，以及接收者链上的接收区块。Block-lattice 看上似乎太简单，以至于无法工作，但它已经在实际运行了。Block-lattice 的独特结构的确无法抵制一些独特的攻击向量，例如 Penny-spend 攻击。在这种攻击中，攻击者通过向大量空钱包发送数额可忽略不计的金钱，导致必须要追踪的链数量急剧膨胀。</p>
+<p><strong>扩展阅读</strong>：<a href="https://raiblocks.net/media/RaiBlocks_Whitepaper__English.pdf" target="_blank" rel="noopener">Nano</a></p>
+<h2 id="25-5-SPECTRE"><a href="#25-5-SPECTRE" class="headerlink" title="25.5 SPECTRE"></a>25.5 SPECTRE</h2><p><strong>解释</strong>：SPECTRE，即 “序列化 PoW 事件并通过递归选举确认交易”（Serialization of Proof-of-work Events, Confirming Transactions via Recursive Elections），是提议的一种 Bitcoin 扩展解决方案。它利用 PoW 和 DAG 的组合实现可扩展的共识。在 SPECTER 中，一个挖掘的区块指向多个父节点，而不仅仅是单个节点，这使得网络每秒可以处理多个区块。而挖掘指向某些父区块的区块，这将支持区块的有效性。与 PoW 的“最长链胜出” 的原则相比，SPECTER 使用的原则可描述为“拥有最多子节点的区块胜出”。SPECTRE 尚未得到实际运行测试，因此可能会存在一些新的攻击向量。但我认为，SPECTRE 很有可能成为一种修正 Bitcoin 问题的潜在好做法。</p>
+<p><strong>扩展阅读</strong>：<a href="https://medium.com/@avivzohar/the-spectre-protocol-7dbbebb707b5" target="_blank" rel="noopener">SPECTRE</a></p>
+<h2 id="25-6-ByteBall"><a href="#25-6-ByteBall" class="headerlink" title="25.6 ByteBall"></a>25.6 ByteBall</h2><p><strong>解释</strong>：ByteBall 使用 DAG 建立交易间的<a href="https://en.wikipedia.org/wiki/Partially_ordered_set" target="_blank" rel="noopener">偏序</a>关系，此外还在 DAG 中添加了 “主链”（MC，Main Chain）。</p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3719-1533408977750.png" target="_blank" rel="noopener"></a></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3719-1533408977750.png" target="_blank" rel="noopener"></a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1112615-b34a98f2a1604d5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/693/format/webp" alt="image"></p>
+<p><a href="https://s3.amazonaws.com/infoq.content.live.0/articles/consensuspedia-an-encyclopedia-of-29-consensus-algorithms/zh/resources/3719-1533408977750.png" target="_blank" rel="noopener"></a></p>
+<p>图 DAG 中加粗显示的 “主链”</p>
+<p>MC 允许在交易间定义<a href="https://en.wikipedia.org/wiki/Total_order" target="_blank" rel="noopener">全序</a>关系，即更早加入（直接或间接）MC 的交易，必定更早出现在全序中。如果存在 “双重支付” 问题，那么将视较早出现在全序中的交易版本为有效的，而其它所有的交易均被视为是无效的。</p>
+<p>根据交易在图中的位置，MC 可得到确定性的定义。相关详细信息，请参阅白皮书。作为一般性规则，MC 倾向于采纳由一些总所周知用户所给出的交易，这样的用户被称为 “证人”（Witnesses）。证人列表是由用户自己定义的，因为列表中包括了用户发布的每个交易。然后，MC 沿着 DAG 内路径推进。推进原则包括：</p>
+<ol>
+<li>MC 上相邻交易的证人列表要么完全相同，要么只存在一个突变。</li>
+<li>与其它链相比，MC 中为经过最多数量的由见证人认证的交易。</li>
+</ol>
+<p>ByteBall 也是首个在系统中包含 Oracle 的平台。Oracle 是在 DAG 中添加智能合约功能所必需的。</p>
+<p>这里只给出了一些非常简短和粗略的描述，其中省略了大量重要的细节。要整体了解相关技术，请参阅 ByteBall 白皮书。</p>
+<p><strong>扩展阅读</strong>：<a href="https://byteball.org/Byteball.pdf" target="_blank" rel="noopener">ByteBall</a></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>到此为止。如果读者发现其中有所遗漏，或是存在错误，欢迎在评论中留言。</p>
+<p>感谢阅读。</p>
+<h2 id="作者简介"><a href="#作者简介" class="headerlink" title="作者简介"></a>作者简介</h2><p><img src="https://upload-images.jianshu.io/upload_images/1112615-8735e3e988bb9631.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/370/format/webp" alt="image"></p>
+<p><a href="http://vaibhavsaini.com/" target="_blank" rel="noopener">Vaibhav Saini</a> 是一家由 MIT Cambridge Innovation Center 孵化的初创企业 <a href="http://towardsblockchain.com/" target="_blank" rel="noopener">TowardsBlockchain</a> 的联合创始人。Saini 是一名高级区块链开发人员，具有 Ethereum、Quorum、EOS、Nano、Hashgraph、IOTA 等多种区块链平台的工作经验。Saini 目前是德里印度理工学院（IIT Delhi）的一名大二学生。</p>
+<p><strong>查看英文原文：</strong> <a href="https://hackernoon.com/consensuspedia-an-encyclopedia-of-29-consensus-algorithms-e9c4b4b7d08f" target="_blank" rel="noopener">ConsensusPedia: An Encyclopedia of 30 Consensus Algorithms –A complete list of all consensus algorithms.</a></p>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    SimonZhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2019/08/20/30种共识算法完全列表/" title="30种共识算法完全列表">http://yoursite.com/2019/08/20/30种共识算法完全列表/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Consensus/" rel="tag><i class=" fa fa-tag"> tag.name }}</a>
+          
+        </div>
+      
+    
+      
+      
+      
+    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/16/Substrate：下一代区块链通用框架/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+    
+          <span class="post-nav-divider"></span>
+    
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+    
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/L0YAL.jpeg" alt="SimonZhu">
+            
+              <p class="site-author-name" itemprop="name">SimonZhu</p>
+              <p class="site-description motion-element" itemprop="description">Sharp  Speed  Smooth</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhumeng369@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/zhumeng369" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/anthonyzhu369" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-工作量证明（PoW，Proof-of-Work）"><span class="nav-number">1.</span> <span class="nav-text">1. 工作量证明（PoW，Proof of Work）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-权益证明（PoS，Proof-of-Stake）"><span class="nav-number">2.</span> <span class="nav-text">2. 权益证明（PoS，Proof of Stake）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-延迟工作量证明（dPoW，Delayed-Proof-of-Work）"><span class="nav-number">3.</span> <span class="nav-text">3. 延迟工作量证明（dPoW，Delayed Proof-of-Work）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-授权-PoS（DPoS，Delegated-Proof-of-Stake）"><span class="nav-number">4.</span> <span class="nav-text">4. 授权 PoS（DPoS，Delegated Proof-of-Stake）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-权威证明（PoA，Proof-of-Authority）"><span class="nav-number">5.</span> <span class="nav-text">5. 权威证明（PoA，Proof-of-Authority）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-权重证明（PoWeight，Proof-of-Weight）"><span class="nav-number">6.</span> <span class="nav-text">6. 权重证明（PoWeight，Proof-of-Weight）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-声誉证明（PoR，Proof-of-Reputation）"><span class="nav-number">7.</span> <span class="nav-text">7. 声誉证明（PoR，Proof of Reputation）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-所用时间证明（PoET，Proof-of-Elapsed-Time）"><span class="nav-number">8.</span> <span class="nav-text">8. 所用时间证明（PoET，Proof of Elapsed Time）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-容量证明（PoC，Proof-of-Capacity），也称为空间证明（PoSpace，Proof-of-Space）"><span class="nav-number">9.</span> <span class="nav-text">9. 容量证明（PoC，Proof of Capacity），也称为空间证明（PoSpace，Proof of Space）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-历史证明（PoHistory，Proof-of-History）"><span class="nav-number">10.</span> <span class="nav-text">10. 历史证明（PoHistory，Proof of History）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-权益流通证明（PoSV，Proof-of-Stake-Velocity）"><span class="nav-number">11.</span> <span class="nav-text">11. 权益流通证明（PoSV，Proof of Stake Velocity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-重要性证明（PoImportance，Proof-of-Importance）"><span class="nav-number">12.</span> <span class="nav-text">12. 重要性证明（PoImportance，Proof of Importance）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-烧毁证明（PoBurn，Proof-of-Burn）"><span class="nav-number">13.</span> <span class="nav-text">13. 烧毁证明（PoBurn，Proof of Burn）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-身份证明（PoI，Proof-of-Identity）"><span class="nav-number">14.</span> <span class="nav-text">14. 身份证明（PoI，Proof of Identity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-活动证明（PoActivity，Proof-Of-Activity）"><span class="nav-number">15.</span> <span class="nav-text">15. 活动证明（PoActivity，Proof Of Activity）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-时间证明（PoTime，Proof-of-Time）"><span class="nav-number">16.</span> <span class="nav-text">16. 时间证明（PoTime，Proof of Time）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-存在证明（PoExistence，Proof-of-Existence）"><span class="nav-number">17.</span> <span class="nav-text">17. 存在证明（PoExistence，Proof of Existence）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-Ouroboros"><span class="nav-number">18.</span> <span class="nav-text">18. Ouroboros</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-可收回证明（PoR，Proof-of-Retrievability）"><span class="nav-number">19.</span> <span class="nav-text">19. 可收回证明（PoR，Proof of Retrievability）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-拜占庭容错（Byzantine-Fault-Tolerance）"><span class="nav-number">20.</span> <span class="nav-text">20. 拜占庭容错（Byzantine Fault Tolerance）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-授权拜占庭容错算法（dBFT，Delegated-Byzantine-Fault-Tolerance）"><span class="nav-number">21.</span> <span class="nav-text">21. 授权拜占庭容错算法（dBFT，Delegated Byzantine Fault Tolerance）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-RAFT"><span class="nav-number">22.</span> <span class="nav-text">22. RAFT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-恒星共识（Stellar-Consensus）"><span class="nav-number">23.</span> <span class="nav-text">23. 恒星共识（Stellar Consensus）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-置信度证明（PoB，Proof-of-Believability）"><span class="nav-number">24.</span> <span class="nav-text">24. 置信度证明（PoB，Proof of Believability）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-有向无环图（DAG，Directed-Acyclic-Graphs）"><span class="nav-number">25.</span> <span class="nav-text">25. 有向无环图（DAG，Directed Acyclic Graphs）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-1-Tangle（IOTA）"><span class="nav-number">26.</span> <span class="nav-text">25.1 Tangle（IOTA）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-2-Hashgraph"><span class="nav-number">27.</span> <span class="nav-text">25.2 Hashgraph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-3-Holochain"><span class="nav-number">28.</span> <span class="nav-text">25.3 Holochain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-4-Block-Lattice（Nano）"><span class="nav-number">29.</span> <span class="nav-text">25.4 Block-Lattice（Nano）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-5-SPECTRE"><span class="nav-number">30.</span> <span class="nav-text">25.5 SPECTRE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-6-ByteBall"><span class="nav-number">31.</span> <span class="nav-text">25.6 ByteBall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">32.</span> <span class="nav-text">结束语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作者简介"><span class="nav-number">33.</span> <span class="nav-text">作者简介</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SimonZhu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+
+</div></body></html>
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/home/pyvip/文档/blog/js/src/clicklove.js"></script>
