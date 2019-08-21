@@ -33,7 +33,7 @@ https://git-scm.com/figures/18333fig0105-tn.png
 
 https://git-scm.com/figures/18333fig0106-tn.png
 
-## 安装
+## 一、安装
 
 在 Linux 上安装
 如果要在 Linux 上安装预编译好的 Git 二进制安装包，可以直接用系统提供的包管理工具。在 Fedora 上用 yum 安装：
@@ -44,7 +44,7 @@ $ yum install git-core
 
 $ apt-get install git
 
-##常用命令
+##二、常用命令
 
 
 使用Git前，需要先建立一个仓库(repository)。您可以使用一个已经存在的目录作为Git仓库或创建一个空目录。
@@ -115,3 +115,99 @@ git merge test
 如果您想删除分支，我们使用-d标识。
 
 git branch -d test
+
+##三、使用场景（1）
+
+删除master分支下的所有历史版本与log，只保留当前的版本，并同步至GitHub
+
+###方法一
+先新建一个名为latest_branch的分支，然后将当前master分支中的所有文件添加到latest_branch分支中，接着等待移动完毕后删除master分支，最后把latest_branch这个分支的分支名改为master。
+具体实现：
+
+1、切换到latest_branch分支下
+git checkout --orphan latest_branch
+2、 添加所有文件
+git add -A
+3、 提交更改
+git commit -am "清除所有历史版本以减少仓库大小，请重新从远程拷贝此仓库"
+4、 删除分支
+git branch -D master
+5、将当前分支重命名
+git branch -m master
+6、最后，强制更新存储库。
+git push -f origin master
+
+小技巧
+将如下代码保存在一个bat文件里，然后双击运行即可。
+
+git checkout --orphan latest_branch
+git add -A
+git commit -am "清除所有历史版本以减少仓库大小，请重新从远程拷贝此仓库"
+git branch -D master
+git branch -m master
+git push -f origin master
+
+###方法二
+不推荐使用，可能导致git存储库出现问题。思路：直接删除.git文件再初始化仓库
+
+1. 先删除.git文件夹
+2. 然后初始化Git（user为你的用户名，repo为你的仓库名）
+   git init git remote add origin git@github.com:user/repo
+3. 提交当前版本的代码：
+   git add * git commit -am 'message'
+   最后，强制更新到GitHub：git push -f origin master
+
+##四、git branch 和 git checkout
+
+　　1.Git branch
+
+　　　　一般用于分支的操作，比如创建分支，查看分支等等，
+
+　　　　1.1 git branch
+
+　　　　　　不带参数：列出本地已经存在的分支，并且在当前分支的前面用"*"标记
+
+　　　　1.2 git branch -r
+
+　　　　　　查看远程版本库分支列表
+
+　　　　1.3 git branch -a
+
+　　　　　　查看所有分支列表，包括本地和远程
+
+　　　　1.4 git branch dev
+
+　　　　　　创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支
+
+　　　　1.5 git branch -d dev
+
+　　　　　　删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败，此时可以使用 git branch -D dev：强制删除dev分支，
+
+　　　　1.6 git branch -vv 
+
+　　　　　　可以查看本地分支对应的远程分支
+
+　　　　1.7 git branch -m oldName newName
+
+　　　　　　给分支重命名
+
+　　2. Git checkout
+
+
+　　　　2.1 操作文件
+
+　　　　　　2.1.1 git checkout filename 放弃单个文件的修改
+
+　　　　　　2.1.2 git checkout . 放弃当前目录下的修改
+
+　　　　2.2 操作分支
+
+　　　　　　2.2.1 git checkout master 将分支切换到master
+
+　　　　　　2.2.2 git checkout -b master 如果分支存在则只切换分支，若不存在则创建并切换到master分支，repo start是对git checkout -b这个命令的封装，将所有仓库的分支都切换到master，master是分支名，
+
+　　　　2.3 查看帮助
+
+　　　　　　git checkout --help
+
+　　　　　　当然git checkout还有许多命令，但这些已经能满足我们日常开发所需
