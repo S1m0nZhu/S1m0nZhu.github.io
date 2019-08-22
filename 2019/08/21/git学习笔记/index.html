@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://www.bootcdn.cn//css?family=Lato:300,300italic,400,400italic,700,700italic|Loberster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/005-unicorn.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="git github,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="S1m0n BLOG" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="按照 ​    虽然使用github有几个月了，但是都是照着网上别人的教程按部就班的操作，对git版本管理工具并没有一个完整的功能认识和实践操作，今天从网上搜集了一些较为完整的git使用教程，对git进行一次体系化地学习，为以后提高学习工作效率打下基础。 下面，我将从简介、安装、常用命令、替换工具几个方面对git进行一次全方位梳理，希望对你有所帮助。 Git诞生于 2005 年，是目前世界上最先进">
+<meta name="keywords" content="git github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/git学习笔记/index.html">
+<meta property="og:site_name" content="S1m0n BLOG">
+<meta property="og:description" content="按照 ​    虽然使用github有几个月了，但是都是照着网上别人的教程按部就班的操作，对git版本管理工具并没有一个完整的功能认识和实践操作，今天从网上搜集了一些较为完整的git使用教程，对git进行一次体系化地学习，为以后提高学习工作效率打下基础。 下面，我将从简介、安装、常用命令、替换工具几个方面对git进行一次全方位梳理，希望对你有所帮助。 Git诞生于 2005 年，是目前世界上最先进">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-21T13:55:23.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git学习笔记">
+<meta name="twitter:description" content="按照 ​    虽然使用github有几个月了，但是都是照着网上别人的教程按部就班的操作，对git版本管理工具并没有一个完整的功能认识和实践操作，今天从网上搜集了一些较为完整的git使用教程，对git进行一次体系化地学习，为以后提高学习工作效率打下基础。 下面，我将从简介、安装、常用命令、替换工具几个方面对git进行一次全方位梳理，希望对你有所帮助。 Git诞生于 2005 年，是目前世界上最先进">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/21/git学习笔记/">
+
+
+
+
+
+  <title>git学习笔记 | S1m0n BLOG</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <div class="headband">
+          <a href="https://github.com/S1m0nZhu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">S1m0n BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">All About the Blockchain Techlonogy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+
+    
+    </div></header>
+    
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/git学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SimonZhu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/L0YAL.jpeg">
+    </span>
+    
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="S1m0n BLOG">
+    </span>
+    
+    
+      <header class="post-header">
+    
+        
+        
+          <h1 class="post-title" itemprop="name headline">git学习笔记</h1>
+        
+    
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T12:38:59+08:00">
+                2019-08-21
+              </time>
+            
+    
+            
+    
+            
+          </span>
+    
+          
+    
+          
+            
+          
+    
+          
+          
+    
+          
+    
+          
+    
+          
+    
+        </div>
+      </header>
+    
+    
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+    
+      
+      
+    
+      
+        <p>按照</p>
+<p>​    虽然使用github有几个月了，但是都是照着网上别人的教程按部就班的操作，对git版本管理工具并没有一个完整的功能认识和实践操作，今天从网上搜集了一些较为完整的git使用教程，对git进行一次体系化地学习，为以后提高学习工作效率打下基础。</p>
+<p>下面，我将从简介、安装、常用命令、替换工具几个方面对git进行一次全方位梳理，希望对你有所帮助。</p>
+<p>Git诞生于 2005 年，是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
+<p>直接记录快照，而非差异比较<br>Git 和其他版本控制系统的主要差别在于，Git 只关心文件数据的整体是否发生变化，而大多数其他系统则只关心文件内容的具体差异。</p>
+<p><a href="https://git-scm.com/figures/18333fig0105-tn.png" target="_blank" rel="noopener">https://git-scm.com/figures/18333fig0105-tn.png</a></p>
+<p>近乎所有操作都是本地执行<br>在 Git 中的绝大多数操作都只需要访问本地文件和资源，不用连网。但如果用 CVCS 的话，差不多所有操作都需要连接网络。因为 Git 在本地磁盘上就保存着所有当前项目的历史更新，所以处理起来速度飞快。</p>
+<p>时刻保持数据完整性<br>在保存到 Git 之前，所有数据都要进行内容的校验和（checksum）计算，并将此结果作为数据的唯一标识和索引</p>
+<p>多数操作仅添加数据<br>常用的 Git 操作大多仅仅是把数据添加到数据库。</p>
+<p>文件的三种状态<br>好，现在请注意，接下来要讲的概念非常重要。对于任何一个文件，在 Git 内都只有三种状态：已提交（committed），已修改（modified）和已暂存（staged）。已提交表示该文件已经被安全地保存在本地数据库中了；已修改表示修改了某个文件，但还没有提交保存；已暂存表示把已修改的文件放在下次提交时要保存的清单中。</p>
+<p><a href="https://git-scm.com/figures/18333fig0106-tn.png" target="_blank" rel="noopener">https://git-scm.com/figures/18333fig0106-tn.png</a></p>
+<h2 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h2><p>在 Linux 上安装<br>如果要在 Linux 上安装预编译好的 Git 二进制安装包，可以直接用系统提供的包管理工具。在 Fedora 上用 yum 安装：</p>
+<p>$ yum install git-core</p>
+<p>在 Ubuntu 这类 Debian 体系的系统上，可以用 apt-get 安装：</p>
+<p>$ apt-get install git</p>
+<p>##二、常用命令</p>
+<p>使用Git前，需要先建立一个仓库(repository)。您可以使用一个已经存在的目录作为Git仓库或创建一个空目录。</p>
+<p>使用您当前目录作为Git仓库，我们只需使它初始化。</p>
+<p>git init<br>使用我们指定目录作为Git仓库。</p>
+<p>git init newrepo<br>从现在开始，我们将假设您在Git仓库根目录下，除非另有说明。</p>
+<p>添加新文件<br>我们有一个仓库，但什么也没有，可以使用add命令添加文件。</p>
+<p>git add filename<br>可以使用add… 继续添加任务文件。</p>
+<p>提交版本<br>现在我们已经添加了这些文件，我们希望它们能够真正被保存在Git仓库。</p>
+<p>为此，我们将它们提交到仓库。</p>
+<p>git commit -m “Adding files”<br>如果您不使用-m，会出现编辑器来让你写自己的注释信息。</p>
+<p>当我们修改了很多文件，而不想每一个都add，想commit自动来提交本地修改，我们可以使用-a标识。</p>
+<p>git commit -a -m “Changed some files”<br>git commit 命令的-a选项可将所有被修改或者已删除的且已经被git管理的文档提交到仓库中。</p>
+<p>千万注意，-a不会造成新文件被提交，只能修改。</p>
+<p>发布版本<br>我们先从服务器克隆一个库并上传。</p>
+<p>git clone ssh://example.com/~/www/project.git<br>现在我们修改之后可以进行推送到服务器。</p>
+<p>git push ssh://example.com/~/www/project.git<br>取回更新<br>如果您已经按上面的进行push，下面命令表示，当前分支自动与唯一一个追踪分支进行合并。</p>
+<p>git pull<br>从非默认位置更新到指定的url。</p>
+<p>git pull <a href="http://git.example.com/project.git" target="_blank" rel="noopener">http://git.example.com/project.git</a></p>
+<p>删除<br>如何你想从资源库中删除文件，我们使用rm。</p>
+<p>git rm file<br>分支与合并<br>分支在本地完成，速度快。要创建一个新的分支，我们使用branch命令。</p>
+<p>git branch test<br>branch命令不会将我们带入分支，只是创建一个新分支。所以我们使用checkout命令来更改分支。</p>
+<p>git checkout test<br>第一个分支，或主分支，被称为”master”。</p>
+<p>git checkout master<br>对其他分支的更改不会反映在主分支上。如果想将更改提交到主分支，则需切换回master分支，然后使用合并。</p>
+<p>git checkout master<br>git merge test</p>
+<p>如果您想删除分支，我们使用-d标识。</p>
+<p>git branch -d test</p>
+<p>##三、使用场景（1）</p>
+<p>删除master分支下的所有历史版本与log，只保留当前的版本，并同步至GitHub</p>
+<p>###方法一<br>先新建一个名为latest_branch的分支，然后将当前master分支中的所有文件添加到latest_branch分支中，接着等待移动完毕后删除master分支，最后把latest_branch这个分支的分支名改为master。<br>具体实现：</p>
+<p>1、切换到latest_branch分支下<br>git checkout –orphan latest_branch<br>2、 添加所有文件<br>git add -A<br>3、 提交更改<br>git commit -am “清除所有历史版本以减少仓库大小，请重新从远程拷贝此仓库”<br>4、 删除分支<br>git branch -D master<br>5、将当前分支重命名<br>git branch -m master<br>6、最后，强制更新存储库。<br>git push -f origin master</p>
+<p>小技巧<br>将如下代码保存在一个bat文件里，然后双击运行即可。</p>
+<p>git checkout –orphan latest_branch<br>git add -A<br>git commit -am “清除所有历史版本以减少仓库大小，请重新从远程拷贝此仓库”<br>git branch -D master<br>git branch -m master<br>git push -f origin master</p>
+<p>###方法二<br>不推荐使用，可能导致git存储库出现问题。思路：直接删除.git文件再初始化仓库</p>
+<ol>
+<li>先删除.git文件夹</li>
+<li>然后初始化Git（user为你的用户名，repo为你的仓库名）<br>git init git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:user/repo</li>
+<li>提交当前版本的代码：<br>git add * git commit -am ‘message’<br>最后，强制更新到GitHub：git push -f origin master</li>
+</ol>
+<p>##四、git branch 和 git checkout</p>
+<p>　　1.Git branch</p>
+<p>　　　　一般用于分支的操作，比如创建分支，查看分支等等，</p>
+<p>　　　　1.1 git branch</p>
+<p>　　　　　　不带参数：列出本地已经存在的分支，并且在当前分支的前面用”*”标记</p>
+<p>　　　　1.2 git branch -r</p>
+<p>　　　　　　查看远程版本库分支列表</p>
+<p>　　　　1.3 git branch -a</p>
+<p>　　　　　　查看所有分支列表，包括本地和远程</p>
+<p>　　　　1.4 git branch dev</p>
+<p>　　　　　　创建名为dev的分支，创建分支时需要是最新的环境，创建分支但依然停留在当前分支</p>
+<p>　　　　1.5 git branch -d dev</p>
+<p>　　　　　　删除dev分支，如果在分支中有一些未merge的提交，那么会删除分支失败，此时可以使用 git branch -D dev：强制删除dev分支，</p>
+<p>　　　　1.6 git branch -vv </p>
+<p>　　　　　　可以查看本地分支对应的远程分支</p>
+<p>　　　　1.7 git branch -m oldName newName</p>
+<p>　　　　　　给分支重命名</p>
+<p>　　2. Git checkout</p>
+<p>　　　　2.1 操作文件</p>
+<p>　　　　　　2.1.1 git checkout filename 放弃单个文件的修改</p>
+<p>　　　　　　2.1.2 git checkout . 放弃当前目录下的修改</p>
+<p>　　　　2.2 操作分支</p>
+<p>　　　　　　2.2.1 git checkout master 将分支切换到master</p>
+<p>　　　　　　2.2.2 git checkout -b master 如果分支存在则只切换分支，若不存在则创建并切换到master分支，repo start是对git checkout -b这个命令的封装，将所有仓库的分支都切换到master，master是分支名，</p>
+<p>　　　　2.3 查看帮助</p>
+<p>　　　　　　git checkout –help</p>
+<p>　　　　　　当然git checkout还有许多命令，但这些已经能满足我们日常开发所需</p>
+<p>##五、rebase</p>
+<p>什么是 rebase?<br>git rebase 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。<br>原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。<br>官方解释:  <a href="https://git-scm.com/book/zh/v2/Git-分支-变基" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-分支-变基</a><br>git rebase 和 git merge 有啥区别？<br>rebase会把你当前分支的 commit 放到公共分支的最后面,所以叫变基。就好像你从公共分支又重新拉出来这个分支一样。<br>举例:如果你从 master 拉了个feature分支出来,然后你提交了几个 commit,这个时候刚好有人把他开发的东西合并到 master 了,这个时候 master 就比你拉分支的时候多了几个 commit,如果这个时候你 rebase master 的话，就会把你当前的几个 commit，放到那个人 commit 的后面。</p>
+<p>rebase</p>
+<p>merge 会把公共分支和你当前的commit 合并在一起，形成一个新的 commit 提交</p>
+<p>merge</p>
+<p>注意:</p>
+<p>不要在公共分支使用rebase<br>本地和远端对应同一条分支,优先使用rebase,而不是merge</p>
+<p>抛出问题:<br>为什么不要再公共分支使用rebase?<br>因为往后放的这些 commit 都是新的,这样其他从这个公共分支拉出去的人，都需要再 rebase,相当于你 rebase 东西进来，就都是新的 commit 了</p>
+<p>1-2-3 是现在的分支状态<br>这个时候从原来的master ,checkout出来一个prod分支<br>然后master提交了4.5，prod提交了6.7<br>这个时候master分支状态就是1-2-3-4-5，prod状态变成1-2-3-6-7<br>如果在prod上用rebase master ,prod分支状态就成了1-2-3-4-5-6-7<br>如果是merge<br>1-2-3-6-7-8<br>…….. |4-5|<br>会出来一个8，这个8的提交就是把4-5合进来的提交</p>
+<p>merge和rebase实际上只是用的场景不一样<br>更通俗的解释一波.<br>比如rebase,你自己开发分支一直在做,然后某一天，你想把主线的修改合到你的分支上,做一次集成,这种情况就用rebase比较好.把你的提交都放在主线修改的头上<br>如果用merge，脑袋上顶着一笔merge的8,你如果想回退你分支上的某个提交就很麻烦,还有一个重要的问题,rebase的话,本来我的分支是从3拉出来的,rebase完了之后,就不知道我当时是从哪儿拉出来的我的开发分支<br>同样的,如果你在主分支上用rebase, rebase其他分支的修改,是不是要是别人想看主分支上有什么历史,他看到的就不是完整的历史课,这个历史已经被你篡改了<br>常用指令</p>
+<p>git rebase -I dev 可以将dev分支合并到当前分支<br>这里的”-i“是指交互模式。就是说你可以干预rebase这个事务的过程，包括设置commit message，暂停commit等等。<br>git rebase –abort 放弃一次合并<br>合并多次commit操作:<br>1 git rebase -i dev<br>2 修改最后几次commit记录中的pick 为squash<br>3 保存退出,弹出修改文件,修改commit记录再次保存退出(删除多余的change-id 只保留一个)<br>4 git add .<br>5 git rebase –continue</p>
+
+      
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    SimonZhu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://yoursite.com/2019/08/21/git学习笔记/" title="git学习笔记">http://yoursite.com/2019/08/21/git学习笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+    
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git-github/" rel="tag><i class=" fa fa-tag"> tag.name }}</a>
+          
+        </div>
+      
+    
+      
+      
+      
+    
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/20/30种共识算法完全列表/" rel="next" title="30种共识算法完全列表">
+                <i class="fa fa-chevron-left"></i> 30种共识算法完全列表
+              </a>
+            
+          </div>
+    
+          <span class="post-nav-divider"></span>
+    
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/22/Polkadot-开发者快速入门指南/" rel="prev" title="Polkadot 开发者快速入门指南">
+                Polkadot 开发者快速入门指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/L0YAL.jpeg" alt="SimonZhu">
+            
+              <p class="site-author-name" itemprop="name">SimonZhu</p>
+              <p class="site-description motion-element" itemprop="description">Sharp  Speed  Smooth</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zhumeng369@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/zhumeng369" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/anthonyzhu369" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装"><span class="nav-number">1.</span> <span class="nav-text">一、安装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+    
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SimonZhu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+
+</div></body></html>
+
+<!-- 页面点击小红心 -->
+
+<script type="text/javascript" src="/home/pyvip/文档/blog/js/src/clicklove.js"></script>
